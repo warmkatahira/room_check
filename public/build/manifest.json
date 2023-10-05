@@ -1,6 +1,6 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-37c4afbf.css",
+    "file": "assets/app-87420bc4.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -15,9 +15,14 @@
     "src": "resources/js/progress/category_select.js"
   },
   "resources/scss/navigation.scss": {
-    "file": "assets/navigation-e712a83e.css",
+    "file": "assets/navigation-63e62e6e.css",
     "isEntry": true,
     "src": "resources/scss/navigation.scss"
+  },
+  "resources/scss/navigation_hamburger.scss": {
+    "file": "assets/navigation_hamburger-6fe7efc1.css",
+    "isEntry": true,
+    "src": "resources/scss/navigation_hamburger.scss"
   },
   "resources/scss/theme.scss": {
     "file": "assets/theme-56b49ee5.css",

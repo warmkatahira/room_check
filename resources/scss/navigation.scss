@@ -1,6 +1,7 @@
 $color-base: #00704a;
 $color-sub:#b9dacf;
 $nav-height: 30px;
+
 // 余白と枠を横幅・高さに含める
 *{
   box-sizing: border-box;
@@ -124,10 +125,25 @@ nav{
   }
 }
 
+/* ハンバーガーのナビゲーションバーを非表示 */
+#hamburger {
+  display: none;
+}
+
 /* モバイル用のスタイル（例: 768px以下の幅の場合） */
 @media (max-width: 768px) {
   nav {
     min-width: auto; /* モバイルでは最小幅を解除 */
     width: 100%; /* 画面幅いっぱいに表示 */
+  }
+
+  /* ハンバーガーのナビゲーションバーを表示 */
+  #hamburger {
+    display: block;
+  }
+  
+  /* 通常のナビゲーションバーを非表示 */
+  #navigation {
+    display: none;
   }
 }

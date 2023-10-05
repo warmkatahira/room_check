@@ -15,6 +15,7 @@ export default defineConfig({
                 'resources/js/app.js',
                 'resources/scss/theme.scss',
                 'resources/scss/navigation.scss',
+                'resources/scss/navigation_hamburger.scss',
                 // 進捗
                 'resources/js/progress/category_select.js',
             ],
