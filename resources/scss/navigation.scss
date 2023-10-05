@@ -123,3 +123,11 @@ nav{
       transform: none
   }
 }
+
+/* モバイル用のスタイル（例: 768px以下の幅の場合） */
+@media (max-width: 768px) {
+  nav {
+    min-width: auto; /* モバイルでは最小幅を解除 */
+    width: 100%; /* 画面幅いっぱいに表示 */
+  }
+}
