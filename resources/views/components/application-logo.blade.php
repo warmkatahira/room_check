@@ -1,0 +1,1 @@
+<img src="{{ asset('image/mieru_logo.svg') }}" class="inline-block w-64">
