@@ -14,7 +14,7 @@ class ProgressController extends Controller
     public function customer()
     {
         // 荷主を全て取得(進捗関連データも同時に取得しておく)
-        $customers = Customer::with('progresses')->get();
+        $customers = Customer::with('progresses')->orderBy('customers.updated_at', 'desc')->get();
         return view('progress.customer')->with([
             'customers' => $customers,
         ]);

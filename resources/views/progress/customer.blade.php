@@ -1,6 +1,6 @@
 <x-app-layout>
     <!-- カテゴリ選択 -->
-    <x-top.category-select />
+    <x-progress.category-select />
     <!-- 荷主単位 -->
     <div class="grid grid-cols-12 gap-4 mt-5">
         @foreach($customers as $customer)
