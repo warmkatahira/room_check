@@ -18,6 +18,8 @@ export default defineConfig({
                 'resources/scss/navigation_hamburger.scss',
                 // 進捗
                 'resources/js/progress/category_select.js',
+                // 荷主マスタ
+                'resources/js/customer/customer_update.js',
             ],
         ),
     ],

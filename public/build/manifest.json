@@ -1,6 +1,6 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-87420bc4.css",
+    "file": "assets/app-879b62a3.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -8,6 +8,11 @@
     "file": "assets/app-6e0eadfb.js",
     "isEntry": true,
     "src": "resources/js/app.js"
+  },
+  "resources/js/customer/customer_update.js": {
+    "file": "assets/customer_update-5e408f41.js",
+    "isEntry": true,
+    "src": "resources/js/customer/customer_update.js"
   },
   "resources/js/progress/category_select.js": {
     "file": "assets/category_select-1a7ffd1d.js",

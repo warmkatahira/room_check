@@ -4,10 +4,10 @@
     <a href="{{ route('progress.customer') }}" class="logo">ミエル</a>
     <ul class="links flex">
         <li class="dropdown"><a href="{{ route('progress.customer') }}" class="trigger-drop">進捗</a></li>
-        <li class="dropdown"><a href="#" class="trigger-drop">商品</a>
+        <li class="dropdown"><a href="#" class="trigger-drop">マスタ</a>
             <ul class="drop">
-                <li><a href="">商品マスタ</a></li>
-                <li><a href="">商品アップロード</a></li>
+                <li><a href="{{ route('customer.index') }}">荷主マスタ</a></li>
+                <li><a href="">項目マスタ</a></li>
             </ul>
         </li>
         <li class="dropdown"><a href="#" class="trigger-drop">在庫</a>

@@ -2,10 +2,12 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-// +-+-+-+-+-+-+-+- Welcome +-+-+-+-+-+-+-+-
+// +-+-+-+-+-+-+-+- ウェルカム +-+-+-+-+-+-+-+-
 use App\Http\Controllers\Welcome\WelcomeController;
-// +-+-+-+-+-+-+-+- Progress +-+-+-+-+-+-+-+-
+// +-+-+-+-+-+-+-+- 進捗 +-+-+-+-+-+-+-+-
 use App\Http\Controllers\Progress\ProgressController;
+// +-+-+-+-+-+-+-+- 荷主 +-+-+-+-+-+-+-+-
+use App\Http\Controllers\Customer\CustomerController;
 
 // ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆ Welcome ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆
     // -+-+-+-+-+-+-+-+-+-+-+-+ Welcome -+-+-+-+-+-+-+-+-+-+-+-+
@@ -15,13 +17,19 @@ use App\Http\Controllers\Progress\ProgressController;
 
 // ログインとステータスチェック
 Route::middleware(['auth'])->group(function () {
-    // ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆ Top ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆
-        // -+-+-+-+-+-+-+-+-+-+-+-+ TOP -+-+-+-+-+-+-+-+-+-+-+-+
-        Route::controller(ProgressController::class)->prefix('progress')->name('progress.')->group(function(){
-            Route::get('customer', 'customer')->name('customer');
-            Route::get('base', 'base')->name('base');
-            Route::get('tag', 'tag')->name('tag');
-        });
+    // ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆ 進捗 ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆
+    Route::controller(ProgressController::class)->prefix('progress')->name('progress.')->group(function(){
+        Route::get('customer', 'customer')->name('customer');
+        Route::get('base', 'base')->name('base');
+        Route::get('tag', 'tag')->name('tag');
+    });
+    // ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆ 荷主 ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆
+    Route::controller(CustomerController::class)->prefix('customer')->name('customer.')->group(function(){
+        Route::get('', 'index')->name('index');
+        Route::get('update', 'update_index')->name('update_index');
+        Route::post('update', 'update')->name('update');
+        Route::post('delete', 'delete')->name('delete');
+    });
     
 });
 

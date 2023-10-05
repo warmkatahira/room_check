@@ -16,6 +16,9 @@ return new class extends Migration
             $table->string('customer_code', 20);
             $table->unsignedInteger('tag_id');
             $table->timestamps();
+            // 外部キー制約
+            $table->foreign('customer_code')->references('customer_code')->on('customers')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreign('tag_id')->references('tag_id')->on('tags')->cascadeOnUpdate()->cascadeOnDelete();
         });
     }
 

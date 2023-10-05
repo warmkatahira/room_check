@@ -23,6 +23,11 @@ class Customer extends Model
     {
         return self::orderBy('created_at', 'asc');
     }
+    // 指定したレコードを取得
+    public static function getSpecify($customer_code)
+    {
+        return self::where('customer_code', $customer_code);
+    }
     // progressesテーブルとのリレーション
     public function progresses()
     {
