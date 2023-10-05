@@ -9,6 +9,11 @@
     "isEntry": true,
     "src": "resources/js/app.js"
   },
+  "resources/js/progress/category_select.js": {
+    "file": "assets/category_select-1a7ffd1d.js",
+    "isEntry": true,
+    "src": "resources/js/progress/category_select.js"
+  },
   "resources/scss/navigation.scss": {
     "file": "assets/navigation-93e89f72.css",
     "isEntry": true,
