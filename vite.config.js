@@ -19,7 +19,7 @@ export default defineConfig({
                 // 進捗
                 'resources/js/progress/category_select.js',
                 // 荷主マスタ
-                'resources/js/customer/customer_update.js',
+                'resources/js/customer/customer.js',
             ],
         ),
     ],

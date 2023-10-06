@@ -9,15 +9,41 @@ use App\Models\Customer;
 use App\Models\Base;
 // サービス
 use App\Services\Customer\CustomerService;
+// リクエスト
+use App\Http\Requests\CustomerCreateRequest;
+use App\Http\Requests\CustomerUpdateRequest;
 
 class CustomerController extends Controller
 {
     public function index()
     {
-        // 荷主を全て取得
-        $customers = Customer::join('bases', 'bases.base_id', 'customers.base_id')->orderBy('base_sort_order', 'asc')->get();
+        // 荷主と営業所を結合して取得
+        $customers = Customer::join('bases', 'bases.base_id', 'customers.base_id')
+                        ->orderBy('base_sort_order', 'asc')
+                        ->get();
         return view('customer.index')->with([
             'customers' => $customers,
+        ]);
+    }
+
+    public function create_index()
+    {
+        // 営業所を全て取得
+        $bases = Base::getAll()->get();
+        return view('customer.create')->with([
+            'bases' => $bases,
+        ]);
+    }
+
+    public function create(CustomerCreateRequest $request)
+    {
+        // インスタンス化
+        $CustomerService = new CustomerService;
+        // 荷主を追加
+        $CustomerService->createCustomer($request);
+        return redirect()->route('customer.index')->with([
+            'alert_type' => 'success',
+            'alert_message' => '荷主追加が完了しました。',
         ]);
     }
 
@@ -33,7 +59,7 @@ class CustomerController extends Controller
         ]);
     }
 
-    public function update(Request $request)
+    public function update(CustomerUpdateRequest $request)
     {
         // インスタンス化
         $CustomerService = new CustomerService;

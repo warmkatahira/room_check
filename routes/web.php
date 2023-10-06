@@ -26,6 +26,8 @@ Route::middleware(['auth'])->group(function () {
     // ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆ 荷主 ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆
     Route::controller(CustomerController::class)->prefix('customer')->name('customer.')->group(function(){
         Route::get('', 'index')->name('index');
+        Route::get('create', 'create_index')->name('create_index');
+        Route::post('create', 'create')->name('create');
         Route::get('update', 'update_index')->name('update_index');
         Route::post('update', 'update')->name('update');
         Route::post('delete', 'delete')->name('delete');

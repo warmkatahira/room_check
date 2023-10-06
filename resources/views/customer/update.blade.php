@@ -1,11 +1,14 @@
-@vite(['resources/js/customer/customer_update.js'])
+@vite(['resources/js/customer/customer.js'])
 
 <x-app-layout>
+    <x-page-header content="荷主マスタ詳細" />
+    <!-- バリデーションエラー表示 -->
+    <x-validation-error-msg />
     <form method="POST" action="{{ route('customer.update') }}" id="customer_update_form" class="grid grid-cols-12 m-0">
         @csrf
         <div class="col-start-1 xl:col-start-1 col-span-12 xl:col-span-4 grid grid-cols-12">
             <p class="col-span-12 xl:col-span-4 py-2 text-sm text-center text-white bg-theme-main">荷主コード</p>
-            <p class="col-span-12 xl:col-span-8 py-2 text-sm border-none bg-white pl-3">{{ $customer->customer_code }}</p>
+            <p class="col-span-12 xl:col-span-8 py-2 text-sm border-none bg-gray-400 pl-3">{{ $customer->customer_code }}</p>
         </div>
         <div class="col-start-1 xl:col-start-1 col-span-12 xl:col-span-4 grid grid-cols-12 mt-3">
             <p class="col-span-12 xl:col-span-4 py-2 text-sm text-center text-white bg-theme-main">荷主名</p>
