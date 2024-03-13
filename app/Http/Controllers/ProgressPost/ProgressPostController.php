@@ -14,27 +14,24 @@ class ProgressPostController extends Controller
 {
     public function post(Request $request)
     {
-        /* dd($request->params); */
-        foreach($request->item_code as $key => $item_code){
-            // 送信されてきたパラメータの進捗をテーブルから取得
-            $progress = Progress::where('customer_code', $request->customer_code)
-                ->where('item_code', $item_code);
-            // 既に存在する進捗の場合
-            if($progress->count() > 0){
-                // 値を更新
-                $progress->update([
-                    'progress_value' => $request->progress_value[$key],
-                ]);
-            }
-            // 存在しない進捗の場合
-            if($progress->count() == 0){
-                // 進捗を追加
-                Progress::create([
-                    'customer_code' => $request->customer_code,
-                    'item_code' => $item_code,
-                    'progress_value' => $request->progress_value[$key],
-                ]);
-            }
+        // 送信されてきたパラメータの進捗をテーブルから取得
+        $progress = Progress::where('customer_code', $request->customer_code)
+                        ->where('item_code', $item_code);
+        // 既に存在する進捗の場合
+        if($progress->count() > 0){
+            // 値を更新
+            $progress->update([
+                'progress_value' => $request->progress_value[$key],
+            ]);
+        }
+        // 存在しない進捗の場合
+        if($progress->count() == 0){
+            // 進捗を追加
+            Progress::create([
+                'customer_code' => $request->customer_code,
+                'item_code' => $item_code,
+                'progress_value' => $request->progress_value[$key],
+            ]);
         }
 
 
