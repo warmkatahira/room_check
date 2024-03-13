@@ -52,7 +52,7 @@
                         @endphp
                         <div class="bg-theme-sub py-2 px-3 border-b border-x border-theme-main flex flex-row">
                             <p class="text-sm text-black w-8/12">進捗率</p>
-                            <p class="text-sm text-black pr-3 w-3/12 text-right">{{ number_format($progress_ratio, 1) }}</p>
+                            <p class="text-sm text-black pr-3 w-3/12 text-right">{{ number_format($progress_ratio, 2) }}</p>
                             <p class="text-sm text-black w-1/12 text-left"><i class="las la-percent"></i></p>
                         </div>
                     @endif
