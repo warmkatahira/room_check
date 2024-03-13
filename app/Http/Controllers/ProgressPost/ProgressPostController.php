@@ -14,8 +14,9 @@ class ProgressPostController extends Controller
 {
     public function post(Request $request)
     {
+        dd($params);
         foreach($request->params as $param){
-            dd($param);
+            $a = $param;
         }
 
 
