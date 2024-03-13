@@ -1,0 +1,1 @@
+$("#item_create_enter").on("click",function(){window.confirm("項目を追加しますか？")==!0&&$("#item_create_form").submit()});$("#item_update_enter").on("click",function(){window.confirm("項目を更新しますか？")==!0&&$("#item_update_form").submit()});$("#item_delete_enter").on("click",function(){window.confirm("項目を削除しますか？")==!0&&$("#item_delete_form").submit()});

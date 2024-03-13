@@ -8,6 +8,8 @@ use App\Http\Controllers\Welcome\WelcomeController;
 use App\Http\Controllers\Progress\ProgressController;
 // +-+-+-+-+-+-+-+- 荷主 +-+-+-+-+-+-+-+-
 use App\Http\Controllers\Customer\CustomerController;
+// +-+-+-+-+-+-+-+- 項目 +-+-+-+-+-+-+-+-
+use App\Http\Controllers\Item\ItemController;
 
 // ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆ Welcome ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆
     // -+-+-+-+-+-+-+-+-+-+-+-+ Welcome -+-+-+-+-+-+-+-+-+-+-+-+
@@ -25,6 +27,15 @@ Route::middleware(['auth'])->group(function () {
     });
     // ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆ 荷主 ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆
     Route::controller(CustomerController::class)->prefix('customer')->name('customer.')->group(function(){
+        Route::get('', 'index')->name('index');
+        Route::get('create', 'create_index')->name('create_index');
+        Route::post('create', 'create')->name('create');
+        Route::get('update', 'update_index')->name('update_index');
+        Route::post('update', 'update')->name('update');
+        Route::post('delete', 'delete')->name('delete');
+    });
+    // ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆ 項目 ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆
+    Route::controller(ItemController::class)->prefix('item')->name('item.')->group(function(){
         Route::get('', 'index')->name('index');
         Route::get('create', 'create_index')->name('create_index');
         Route::post('create', 'create')->name('create');

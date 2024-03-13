@@ -14,7 +14,7 @@ class ProgressController extends Controller
     public function customer()
     {
         // 荷主を全て取得(進捗関連データも同時に取得しておく)
-        $customers = Customer::with('progresses')->orderBy('customers.updated_at', 'desc')->get();
+        $customers = Customer::with('progresses')->orderBy('updated_at', 'desc')->get();
         return view('progress.customer')->with([
             'customers' => $customers,
         ]);
@@ -24,7 +24,7 @@ class ProgressController extends Controller
     {
         // インスタンス化
         $ProgressService = new ProgressService;
-        // 営業所毎で集計した進捗を取得
+        // 拠点毎で集計した進捗を取得
         $base_progress_arr = $ProgressService->getProgressByBase();
         return view('progress.base')->with([
             'base_progress_arr' => $base_progress_arr,

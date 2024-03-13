@@ -10,15 +10,17 @@ class Base extends Model
     use HasFactory;
     // 主キーカラムを変更
     protected $primaryKey = 'base_id';
+    // オートインクリメント無効化
+    public $incrementing = false;
     // 操作可能なカラムを定義
     protected $fillable = [
+        'base_id',
         'base_name',
-        'base_sort_order',
     ];
     // 全て取得
     public static function getAll()
     {
-        return self::orderBy('base_sort_order', 'asc');
+        return self::orderBy('base_id', 'asc');
     }
     // customersテーブルとのリレーション
     public function customers()

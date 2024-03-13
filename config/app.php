@@ -184,6 +184,7 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
         'LatestUpdatedAtGetFunc' => App\Lib\LatestUpdatedAtGetFunc::class,
+        'CarbonImmutable' => Carbon\CarbonImmutable::class,
     ])->toArray(),
 
 ];

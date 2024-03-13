@@ -3,22 +3,26 @@
     <div class="grid grid-cols-12 my-5">
         <a href="{{ route('customer.create') }}" class="col-span-12 xl:col-span-1 py-3 text-center text-white text-sm bg-blue-600"><i class="las la-plus-square la-lg mr-1"></i>荷主追加</a>
     </div>
-    <div class="grid grid-cols-12 gap-2">
-        @foreach($customers as $customer)
-            <a href="{{ route('customer.update_index', ['customer_code' => $customer->customer_code]) }}" class="col-span-12 xl:col-span-3 border border-theme-main">
-                <div class="grid grid-cols-12 border-b border-theme-main">
-                    <p class="col-span-4 py-2 text-sm text-center bg-theme-sub">荷主名</p>
-                    <p class="col-span-8 py-2 text-sm text-center bg-theme-sub">{{ $customer->customer_name }}</p>
-                </div>
-                <div class="grid grid-cols-12 border-b border-theme-main">
-                    <p class="col-span-4 py-2 text-sm text-center bg-theme-sub">荷主コード</p>
-                    <p class="col-span-8 py-2 text-sm text-center bg-theme-sub">{{ $customer->customer_code }}</p>
-                </div>
-                <div class="grid grid-cols-12">
-                    <p class="col-span-4 py-2 text-sm text-center bg-theme-sub">営業所名</p>
-                    <p class="col-span-8 py-2 text-sm text-center bg-theme-sub">{{ $customer->base->base_name }}</p>
-                </div>
-            </a>
-        @endforeach
+    <div class="">
+        <table class="text-sm block whitespace-nowrap">
+            <thead>
+                <tr class="text-center text-white bg-gray-600 sticky top-0">
+                    <th class="font-thin py-3 px-2">荷主コード</th>
+                    <th class="font-thin py-3 px-2">荷主名</th>
+                    <th class="font-thin py-3 px-2">営業所名</th>
+                </tr>
+            </thead>
+            <tbody class="bg-white">
+                @foreach($customers as $customer)
+                    <tr class="text-left hover:bg-theme-sub cursor-default">
+                        <td class="py-1 px-2 border">
+                            <a href="{{ route('customer.update_index', ['customer_code' => $customer->customer_code]) }}" class="text-blue-600">{{ $customer->customer_code }}</a>
+                        </td>
+                        <td class="py-1 px-2 border">{{ $customer->customer_name }}</td>
+                        <td class="py-1 px-2 border">{{ $customer->base->base_name }}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
     </div>
 </x-app-layout>

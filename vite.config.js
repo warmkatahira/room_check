@@ -20,6 +20,8 @@ export default defineConfig({
                 'resources/js/progress/category_select.js',
                 // 荷主マスタ
                 'resources/js/customer/customer.js',
+                // 項目マスタ
+                'resources/js/item/item.js',
             ],
         ),
     ],

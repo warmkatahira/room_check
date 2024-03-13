@@ -15,37 +15,37 @@ class ItemSeeder extends Seeder
     {
         Item::create([
             'item_code' => 'shipment_order_quantity',
-            'item_name' => '出荷数(件)',
+            'item_name' => '出荷数',
             'item_unit' => '件',
             'item_sort_order' => 1,
         ]);
         Item::create([
             'item_code' => 'inspection_incomplete_shipment_order_quantity',
-            'item_name' => '出荷検品残数(件)',
+            'item_name' => '出荷検品残数',
             'item_unit' => '件',
             'item_sort_order' => 2,
         ]);
         Item::create([
             'item_code' => 'shipment_quantity_pcs',
-            'item_name' => '出荷数(PCS)',
+            'item_name' => '出荷数',
             'item_unit' => 'PCS',
             'item_sort_order' => 3,
         ]);
         Item::create([
             'item_code' => 'inspection_incomplete_shipment_quantity_pcs',
-            'item_name' => '出荷検品残数(PCS)',
+            'item_name' => '出荷検品残数',
             'item_unit' => 'PCS',
             'item_sort_order' => 4,
         ]);
         Item::create([
             'item_code' => 'shipment_quantity_cs',
-            'item_name' => '出荷数(C/S)',
+            'item_name' => '出荷数',
             'item_unit' => 'C/S',
             'item_sort_order' => 5,
         ]);
         Item::create([
             'item_code' => 'inspection_incomplete_shipment_quantity_cs',
-            'item_name' => '出荷検品残数(C/S)',
+            'item_name' => '出荷検品残数',
             'item_unit' => 'C/S',
             'item_sort_order' => 6,
         ]);

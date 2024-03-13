@@ -24,4 +24,9 @@ class Item extends Model
     {
         return self::orderBy('item_sort_order', 'asc');
     }
+    // 指定したレコードを取得
+    public static function getSpecify($item_code)
+    {
+        return self::where('item_code', $item_code);
+    }
 }

@@ -7,9 +7,17 @@
             <!-- 進捗がある荷主だけ表示 -->
             @if(count($customer->progresses) > 0)
                 <div class="col-span-12 xl:col-span-3 flex flex-col">
-                    <div class="bg-theme-main py-1 px-3 border border-theme-main flex flex-row">
-                        <p class="text-sm text-white w-4/12 text-left">{{ $customer->base->base_name }}</p>
-                        <p class="text-xs text-white w-8/12 text-right">{{ '最終更新：'.\Carbon\CarbonImmutable::parse(LatestUpdatedAtGetFunc::get($customer->customer_code))->isoFormat('YYYY年MM月DD日(ddd) HH時mm分') }}</p>
+                    @php
+                        $bg = 'bg-theme-main';
+                        // 最終出荷確定日が現在の日付と同じであれば背景色を変更
+                        if($customer->last_shipping_confirmed_date == CarbonImmutable::now()->format('Y-m-d')){
+                            $bg = 'bg-orange-600';
+                        }   
+                    @endphp
+                    <div class="{{ $bg }} py-1 px-3 flex flex-row">
+                        <p class="text-xs text-white w-5/12 text-left">{{ $customer->base->base_name }}</p>
+                        <p class="text-xs text-white w-7/12 text-right"><i class="las la-clock la-lg mr-1"></i>{{ CarbonImmutable::parse($customer->updated_at)->isoFormat('YYYY年MM月DD日(ddd) HH時mm分') }}</p>
+                        {{-- <p class="text-xs text-white w-8/12 text-right">{{ '最終更新：'.CarbonImmutable::parse(LatestUpdatedAtGetFunc::get($customer->customer_code))->isoFormat('YYYY年MM月DD日(ddd) HH時mm分') }}</p> --}}
                     </div>
                     <div class="bg-theme-main py-3">
                         <p class="text-white text-center">{{ $customer->customer_name }}</p>
