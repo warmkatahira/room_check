@@ -20,6 +20,7 @@ class ProgressService
         // 項目を配列にセット
         foreach($items as $item){
             $item_arr[$item->item_code] = [
+                'item_code' => $item->item_code,
                 'item_name' => $item->item_name,
                 'value' => null,
                 'item_unit' => $item->item_unit,
@@ -59,6 +60,7 @@ class ProgressService
         // 項目を配列にセット
         foreach($items as $item){
             $item_arr[$item->item_code] = [
+                'item_code' => $item->item_code,
                 'item_name' => $item->item_name,
                 'value' => null,
                 'item_unit' => $item->item_unit,

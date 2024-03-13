@@ -33,9 +33,6 @@ class ProgressPostController extends Controller
                 'progress_value' => $request->progress_value,
             ]);
         }
-
-
-        
         // 荷主のupdated_atを更新
         Customer::where('customer_code', $request->customer_code)->update([
             'updated_at' => CarbonImmutable::now(),
