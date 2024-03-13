@@ -14,6 +14,11 @@ class ProgressPostController extends Controller
 {
     public function post(Request $request)
     {
+        foreach($request->params as $param){
+            dd($param);
+        }
+
+
         // 送信されてきたパラメータの進捗をテーブルから取得
         $progress = Progress::where('customer_code', $request->customer_code)
                 ->where('item_code', $request->item_code);
