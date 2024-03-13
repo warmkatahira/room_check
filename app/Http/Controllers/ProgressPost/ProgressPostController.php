@@ -16,7 +16,7 @@ class ProgressPostController extends Controller
     {
         /* dd($request->params); */
         foreach($request->params as $param){
-            dd($param);
+            $a = $param;
         }
 
 
@@ -44,7 +44,7 @@ class ProgressPostController extends Controller
             'updated_at' => CarbonImmutable::now(),
         ]);
         return response()->json([
-            "message" => $request->params
+            "message" => $a
         ], 201);
     }
 }
