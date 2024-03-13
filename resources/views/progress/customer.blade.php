@@ -27,13 +27,35 @@
                             <span class="col-span-6 xl:col-span-4 text-xs text-white text-center"><i class="las la-tag"></i>{{ $tag->tag_name }}</span>
                         @endforeach
                     </div>
+                    @php
+                        $shipment_quantity_pcs = '';
+                        $inspection_incomplete_shipment_quantity_pcs = '';
+                    @endphp
                     @foreach($customer->progresses as $progress)
                         <div class="bg-theme-sub py-2 px-3 border-b border-x border-theme-main flex flex-row">
                             <p class="text-sm text-black w-8/12">{{ $progress->item->item_name }}</p>
                             <p class="text-sm text-black pr-3 w-3/12 text-right">{{ number_format($progress->progress_value) }}</p>
                             <p class="text-sm text-black w-1/12 text-left">{{ $progress->item->item_unit }}</p>
+                            @php
+                                if($progress->item_code == 'shipment_quantity_pcs'){
+                                    $shipment_quantity_pcs = $progress->progress_value;
+                                }
+                                if($progress->item_code == 'inspection_incomplete_shipment_quantity_pcs'){
+                                    $inspection_incomplete_shipment_quantity_pcs = $progress->progress_value;
+                                }
+                            @endphp
                         </div>
                     @endforeach
+                    @if($shipment_quantity_pcs != '' && $inspection_incomplete_shipment_quantity_pcs != '')
+                        @php
+                            $progress_ratio = (($shipment_quantity_pcs - $inspection_incomplete_shipment_quantity_pcs) / $shipment_quantity_pcs) * 100;
+                        @endphp
+                        <div class="bg-theme-sub py-2 px-3 border-b border-x border-theme-main flex flex-row">
+                            <p class="text-sm text-black w-8/12">進捗率</p>
+                            <p class="text-sm text-black pr-3 w-3/12 text-right">{{ number_format($progress_ratio, 2) }}</p>
+                            <p class="text-sm text-black w-1/12 text-left"><i class="las la-percent"></i></p>
+                        </div>
+                    @endif
                 </div>
             @endif
         @endforeach
