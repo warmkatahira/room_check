@@ -14,9 +14,9 @@ class ProgressPostController extends Controller
 {
     public function post(Request $request)
     {
-        /* foreach($request->params as $param){
+        foreach($request->params as $param){
             dd($param);
-        } */
+        }
 
 
         // 送信されてきたパラメータの進捗をテーブルから取得
