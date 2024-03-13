@@ -27,7 +27,7 @@ class ProgressPostController extends Controller
         // 存在しない進捗の場合
         if($progress->count() == 0){
             // 進捗を追加
-            Progress::crete([
+            Progress::create([
                 'customer_code' => $request->customer_code,
                 'item_code' => $request->item_code,
                 'progress_value' => $request->progress_value,
