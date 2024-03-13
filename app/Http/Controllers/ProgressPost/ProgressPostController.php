@@ -16,12 +16,12 @@ class ProgressPostController extends Controller
     {
         // 送信されてきたパラメータの進捗をテーブルから取得
         $progress = Progress::where('customer_code', $request->customer_code)
-                        ->where('item_code', $item_code);
+                        ->where('item_code', $request->item_code);
         // 既に存在する進捗の場合
         if($progress->count() > 0){
             // 値を更新
             $progress->update([
-                'progress_value' => $request->progress_value[$key],
+                'progress_value' => $request->progress_value,
             ]);
         }
         // 存在しない進捗の場合
@@ -29,8 +29,8 @@ class ProgressPostController extends Controller
             // 進捗を追加
             Progress::create([
                 'customer_code' => $request->customer_code,
-                'item_code' => $item_code,
-                'progress_value' => $request->progress_value[$key],
+                'item_code' => $request->item_code,
+                'progress_value' => $request->progress_value,
             ]);
         }
 
@@ -41,7 +41,7 @@ class ProgressPostController extends Controller
             'updated_at' => CarbonImmutable::now(),
         ]);
         return response()->json([
-            "message" => $request->params[0],
+            "message" => 'OK',
         ], 201);
     }
 }
