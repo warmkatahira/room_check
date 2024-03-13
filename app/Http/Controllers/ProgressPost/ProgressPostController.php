@@ -14,9 +14,9 @@ class ProgressPostController extends Controller
 {
     public function post(Request $request)
     {
-        foreach($request->params as $param){
+        /* foreach($request->params as $param){
             dd($param);
-        }
+        } */
 
 
         // 送信されてきたパラメータの進捗をテーブルから取得
@@ -43,7 +43,7 @@ class ProgressPostController extends Controller
             'updated_at' => CarbonImmutable::now(),
         ]);
         return response()->json([
-            "message" => "post record created"
+            "message" => $request->params
         ], 201);
     }
 }
