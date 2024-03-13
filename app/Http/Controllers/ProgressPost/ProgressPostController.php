@@ -44,7 +44,7 @@ class ProgressPostController extends Controller
             'updated_at' => CarbonImmutable::now(),
         ]);
         return response()->json([
-            "message" => $a,
+            "message" => $request->params[0],
         ], 201);
     }
 }
