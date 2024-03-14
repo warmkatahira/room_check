@@ -35,7 +35,7 @@
     "src": "resources/scss/navigation_hamburger.scss"
   },
   "resources/scss/theme.scss": {
-    "file": "assets/theme-56b49ee5.css",
+    "file": "assets/theme-c2f33d00.css",
     "isEntry": true,
     "src": "resources/scss/theme.scss"
   }

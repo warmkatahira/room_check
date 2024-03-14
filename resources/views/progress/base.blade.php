@@ -1,6 +1,6 @@
 <x-app-layout>
     <!-- カテゴリ選択 -->
     <x-progress.category-select />
-    <!-- 営業所単位 -->
-    <x-progress.arr-data :arr="$base_progress_arr" />
+    <!-- 拠点単位 -->
+    <x-progress.arr-data :data="$data" />
 </x-app-layout>

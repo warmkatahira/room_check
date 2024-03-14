@@ -32,7 +32,7 @@
         <!-- アラート表示 -->
         <x-alert/>
         <div class="mt-3">
-            <p class="text-2xl text-center text-theme-main">業務進捗確認サービス</p>
+            <p class="text-2xl text-center text-theme-main">業務進捗確認アプリ</p>
             <p class="text-7xl text-center text-theme-main">ミエル</p>
         </div>
         <div class="flex justify-center mt-10">
