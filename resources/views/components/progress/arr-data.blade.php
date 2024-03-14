@@ -1,22 +1,23 @@
 <div class="grid grid-cols-12 gap-4">
     @foreach($data['progress_arr'] as $key => $value)
         <div class="col-span-12 xl:col-span-3 flex flex-col">
-            @if(isset($data['last_updated_arr']))
+            @if(isset($value['last_updated']))
                 <div class="py-1 px-3 text-right">
-                    <p class="text-xs"><i class="las la-clock la-lg mr-1"></i>{{ CarbonImmutable::parse($data['last_updated_arr'][$key])->isoFormat('YYYY年MM月DD日(ddd) HH:mm:ss') }}</p>
+                    <p class="text-xs"><i class="las la-clock la-lg mr-1"></i>{{ CarbonImmutable::parse($value['last_updated'])->isoFormat('YYYY年MM月DD日(ddd) HH:mm:ss') }}</p>
                 </div>
             @endif
             <div class="bg-theme-main py-3 px-3 border border-theme-main">
+                @if(isset($value['base_name']))<p class="text-white text-xs text-left mb-1">{{ $value['base_name'] }}</p>@endif
                 <p class="text-white text-center">{{ $key }}</p>
             </div>
-            @if(isset($data['tag_arr']))
+            @if(isset($value['tags']))
                 <div class="bg-theme-main px-1 py-1 grid grid-cols-12 gap-2">
-                    @foreach($data['tag_arr'][$key] as $tag)
+                    @foreach($value['tags'] as $tag)
                         <span class="col-span-6 xl:col-span-4 text-xs text-white text-center"><i class="las la-tag"></i>{{ $tag->tag_name }}</span>
                     @endforeach
                 </div>
             @endif
-            @foreach($value as $item)
+            @foreach($value['item'] as $item)
                 @if(!is_null($item['value']))
                     <div class="bg-theme-sub py-1 px-3 border-b border-x border-theme-main flex flex-row">
                         <p class="text-sm text-black w-8/12">{{ $item['item_name'] }}</p>
