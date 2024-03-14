@@ -6,12 +6,26 @@
                     <p class="text-xs"><i class="las la-clock la-lg mr-1"></i>{{ CarbonImmutable::parse($value['last_updated'])->isoFormat('YYYY年MM月DD日(ddd) HH:mm:ss') }}</p>
                 </div>
             @endif
-            <div class="bg-theme-main py-3 px-3 border border-theme-main">
-                @if(isset($value['base_name']))<p class="text-white text-xs text-left mb-1">{{ $value['base_name'] }}</p>@endif
+            @php
+                // 初期値をセット
+                $bg = 'bg-theme-main';
+                $bg_sub = 'bg-theme-sub';
+                $border = 'border-theme-main';
+                // 配列があって、値がTrueであれば色を変える
+                if(isset($value['last_shipping_confirmed_today']) && $value['last_shipping_confirmed_today']){
+                    $bg = 'bg-orange-500';
+                    $bg_sub = 'bg-orange-200';
+                    $border = 'border-orange-500';
+                }
+            @endphp
+            <div class="{{ $bg }} py-2 px-3">
+                @if(isset($value['base_name']))
+                    <p class="text-white text-xs text-left mb-1">{{ $value['base_name'] }}</p>
+                @endif
                 <p class="text-white text-center">{{ $key }}</p>
             </div>
-            @if(isset($value['tags']))
-                <div class="bg-theme-main px-1 py-1 grid grid-cols-12 gap-2">
+            @if(isset($value['tags']) && $value['tags']->count() > 0)
+                <div class="{{ $bg }} px-1 py-1 grid grid-cols-12 gap-2">
                     @foreach($value['tags'] as $tag)
                         <span class="col-span-6 xl:col-span-4 text-xs text-white text-center"><i class="las la-tag"></i>{{ $tag->tag_name }}</span>
                     @endforeach
@@ -19,7 +33,7 @@
             @endif
             @foreach($value['item'] as $item)
                 @if(!is_null($item['value']))
-                    <div class="bg-theme-sub py-1 px-3 border-b border-x border-theme-main flex flex-row">
+                    <div class="{{ $bg_sub .' '. $border }} py-1 px-3 border-b border-x flex flex-row">
                         <p class="text-sm text-black w-8/12">{{ $item['item_name'] }}</p>
                         <p class="text-sm text-black pr-3 w-3/12 text-right">{{ number_format($item['value']) }}</p>
                         <p class="text-sm text-black w-1/12 text-left">{{ $item['item_unit'] }}</p>
@@ -28,7 +42,7 @@
             @endforeach
             @foreach($data['progress_ratio_arr'][$key] as $ratio_key => $ratio_value)
                 @if(!is_null($ratio_value))
-                    <div class="bg-theme-sub py-1 px-3 border-b border-x border-theme-main flex flex-row">
+                    <div class="{{ $bg_sub .' '. $border }} py-1 px-3 border-b border-x flex flex-row">
                         <p class="text-sm text-black w-8/12">{{ $ratio_key }}</p>
                         <p class="text-sm text-black pr-3 w-3/12 text-right">{{ number_format($ratio_value, 0) }}</p>
                         <p class="text-sm text-black w-1/12 text-left"><i class="las la-percent"></i></p>

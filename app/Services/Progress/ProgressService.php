@@ -10,6 +10,8 @@ use App\Models\Item;
 use App\Models\Base;
 // 列挙
 use App\Enums\ProgressRatioEnum;
+// その他
+use Carbon\CarbonImmutable;
 
 class ProgressService
 {
@@ -27,12 +29,18 @@ class ProgressService
         $customers = Customer::with('progresses')->orderBy('updated_at', 'desc')->get();
         // 荷主の分だけループ
         foreach($customers as $customer){
+            // 最終出荷確定日が本日であれば「True」、違えば「False」
+            $last_shipping_confirmed_today = false;
+            if($customer->last_shipping_confirmed_date == CarbonImmutable::now()->format('Y-m-d')){
+                $last_shipping_confirmed_today = true;
+            }
             // 今回の拠点IDのキーを配列にセットすると同時に、項目も一式セット
             $progress_arr[$customer->customer_name] = [
                 'item' => $item_arr,
                 'base_name' => $customer->base->base_name,
                 'last_updated' => $customer->updated_at,
                 'tags' => $customer->tags()->get(),
+                'last_shipping_confirmed_today' => $last_shipping_confirmed_today,
             ];
             // 荷主に紐付いている進捗を取得
             $progresses = $customer->progresses()->get();
