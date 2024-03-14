@@ -4,8 +4,6 @@ namespace App\Http\Controllers\Progress;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-// モデル
-use App\Models\Customer;
 // サービス
 use App\Services\Progress\ProgressService;
 

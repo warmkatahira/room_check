@@ -29,7 +29,7 @@
                 @if(!is_null($ratio_value))
                     <div class="bg-theme-sub py-1 px-3 border-b border-x border-theme-main flex flex-row">
                         <p class="text-sm text-black w-8/12">{{ $ratio_key }}</p>
-                        <p class="text-sm text-black pr-3 w-3/12 text-right">{{ number_format($ratio_value, 2) }}</p>
+                        <p class="text-sm text-black pr-3 w-3/12 text-right">{{ number_format($ratio_value, 0) }}</p>
                         <p class="text-sm text-black w-1/12 text-left"><i class="las la-percent"></i></p>
                     </div>
                 @endif

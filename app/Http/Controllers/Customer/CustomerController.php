@@ -17,10 +17,8 @@ class CustomerController extends Controller
 {
     public function index()
     {
-        // 荷主と営業所を結合して取得
-        $customers = Customer::join('bases', 'bases.base_id', 'customers.base_id')
-                        ->orderBy('base_sort_order', 'asc')
-                        ->get();
+        // 荷主を取得
+        $customers = Customer::with('base')->get();
         return view('customer.index')->with([
             'customers' => $customers,
         ]);
