@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 // +-+-+-+-+-+-+-+- Progress +-+-+-+-+-+-+-+-
 use App\Http\Controllers\ProgressPost\ProgressPostController;
+// +-+-+-+-+-+-+-+- Shipping Confirmed +-+-+-+-+-+-+-+-
+use App\Http\Controllers\ShippingConfirmedPost\ShippingConfirmedPostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,5 +20,10 @@ use App\Http\Controllers\ProgressPost\ProgressPostController;
 
 // -+-+-+-+-+-+-+-+-+-+-+-+ 進捗更新 -+-+-+-+-+-+-+-+-+-+-+-+
 Route::controller(ProgressPostController::class)->prefix('progress_post')->name('progress_post.')->group(function(){
+    Route::post('', 'post')->name('post');
+});
+
+// -+-+-+-+-+-+-+-+-+-+-+-+ 出荷確定日更新 -+-+-+-+-+-+-+-+-+-+-+-+
+Route::controller(ShippingConfirmedPostController::class)->prefix('shipping_confirmed_post')->name('shipping_confirmed_post.')->group(function(){
     Route::post('', 'post')->name('post');
 });
