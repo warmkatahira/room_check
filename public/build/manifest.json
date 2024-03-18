@@ -24,6 +24,11 @@
     "isEntry": true,
     "src": "resources/js/progress/category_select.js"
   },
+  "resources/js/tag/tag.js": {
+    "file": "assets/tag-b2e18c5f.js",
+    "isEntry": true,
+    "src": "resources/js/tag/tag.js"
+  },
   "resources/scss/navigation.scss": {
     "file": "assets/navigation-63e62e6e.css",
     "isEntry": true,

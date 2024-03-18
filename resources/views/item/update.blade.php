@@ -15,7 +15,7 @@
     </form>
     <form method="POST" action="{{ route('item.delete') }}" id="item_delete_form" class="grid grid-cols-12 m-0">
         @csrf
-        <input type="hidden" name="itemcode" value="{{ $item->item_code }}">
+        <input type="hidden" name="item_code" value="{{ $item->item_code }}">
         <button type="button" id="item_delete_enter" class="col-start-1 xl:col-start-1 col-span-12 xl:col-span-4 py-3 text-center text-white bg-red-600 mt-5"><i class="las la-trash-alt la-lg mr-1"></i>削除</button>
     </form>
 </x-app-layout>

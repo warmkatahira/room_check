@@ -43,7 +43,7 @@ class ItemController extends Controller
 
     public function update_index(Request $request)
     {
-        // 荷主を取得
+        // 項目を取得
         $item = Item::getSpecify($request->item_code)->first();
         return view('item.update')->with([
             'item' => $item,

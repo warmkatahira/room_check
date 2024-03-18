@@ -20,6 +20,11 @@ class Tag extends Model
     {
         return self::orderBy('tag_sort_order', 'asc');
     }
+    // 指定したレコードを取得
+    public static function getSpecify($tag_id)
+    {
+        return self::where('tag_id', $tag_id);
+    }
     // customersテーブルとのリレーション(中間テーブル用)
     public function customers()
     {

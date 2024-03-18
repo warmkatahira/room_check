@@ -22,6 +22,8 @@ export default defineConfig({
                 'resources/js/customer/customer.js',
                 // 項目マスタ
                 'resources/js/item/item.js',
+                // タグマスタ
+                'resources/js/tag/tag.js',
             ],
         ),
     ],
