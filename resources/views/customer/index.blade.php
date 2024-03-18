@@ -4,7 +4,7 @@
         <a href="{{ route('customer.create') }}" class="col-span-12 xl:col-span-1 py-3 text-center text-white text-sm bg-blue-600"><i class="las la-plus-square la-lg mr-1"></i>荷主追加</a>
     </div>
     <div class="">
-        <table class="text-sm block whitespace-nowrap">
+        <table class="text-xs block whitespace-nowrap">
             <thead>
                 <tr class="text-center text-white bg-gray-600 sticky top-0">
                     <th class="font-thin py-3 px-2">荷主コード</th>
