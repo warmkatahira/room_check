@@ -41,11 +41,16 @@ class Customer extends Model
     {
         return $this->belongsTo(Base::class, 'base_id', 'base_id');
     }
-    // tagsテーブルとのリレーション
-    public function tags()
+    // customer_tagsテーブルとのリレーション
+    public function customer_tags()
     {
         return $this->hasMany(CustomerTag::class, 'customer_code', 'customer_code')
                 ->join('tags', 'tags.tag_id', 'customer_tag.tag_id')
                 ->orderBy('tag_sort_order', 'asc');
+    }
+    // tagsテーブルとのリレーション(中間テーブル用)
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class, 'customer_tag', 'customer_code', 'tag_id');
     }
 }

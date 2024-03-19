@@ -10,8 +10,10 @@ use App\Http\Controllers\Progress\ProgressController;
 use App\Http\Controllers\Customer\CustomerController;
 // +-+-+-+-+-+-+-+- 項目 +-+-+-+-+-+-+-+-
 use App\Http\Controllers\Item\ItemController;
-// +-+-+-+-+-+-+-+- 項目 +-+-+-+-+-+-+-+-
+// +-+-+-+-+-+-+-+- タグ +-+-+-+-+-+-+-+-
 use App\Http\Controllers\Tag\TagController;
+// +-+-+-+-+-+-+-+- 荷主タグ +-+-+-+-+-+-+-+-
+use App\Http\Controllers\CustomerTag\CustomerTagController;
 
 // ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆ Welcome ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆
     // -+-+-+-+-+-+-+-+-+-+-+-+ Welcome -+-+-+-+-+-+-+-+-+-+-+-+
@@ -53,6 +55,12 @@ Route::middleware(['auth'])->group(function () {
         Route::get('update', 'update_index')->name('update_index');
         Route::post('update', 'update')->name('update');
         Route::post('delete', 'delete')->name('delete');
+    });
+    // ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆ 荷主タグ ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆
+    Route::controller(CustomerTagController::class)->prefix('customer_tag')->name('customer_tag.')->group(function(){
+        Route::get('', 'index')->name('index');
+        Route::get('update', 'update_index')->name('update_index');
+        Route::post('update', 'update')->name('update');
     });
     
 });

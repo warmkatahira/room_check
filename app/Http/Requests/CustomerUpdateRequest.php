@@ -40,7 +40,7 @@ class CustomerUpdateRequest extends FormRequest
     {
         return [
             'customer_name' => '荷主名',
-            'base_id' => '営業所名',
+            'base_id' => '拠点名',
         ];
     }
 }

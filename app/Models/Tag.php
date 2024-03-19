@@ -28,6 +28,6 @@ class Tag extends Model
     // customersテーブルとのリレーション(中間テーブル用)
     public function customers()
     {
-        return $this->belongsToMany(Customer::class, 'customer_tag', 'customer_code', 'customer_code');
+        return $this->belongsToMany(Customer::class, 'customer_tag', 'tag_id', 'customer_code');
     }
 }

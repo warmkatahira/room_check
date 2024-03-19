@@ -25,7 +25,7 @@ class ProgressService
         $progress_ratio_arr = [];
         // その他情報を格納する配列をセット
         $tag_arr = [];
-        // 荷主が紐付いている営業所を取得
+        // 荷主が紐付いている拠点を取得
         $customers = Customer::with('progresses')->orderBy('updated_at', 'desc')->get();
         // 荷主の分だけループ
         foreach($customers as $customer){
@@ -39,7 +39,7 @@ class ProgressService
                 'item' => $item_arr,
                 'base_name' => $customer->base->base_name,
                 'last_updated' => $customer->updated_at,
-                'tags' => $customer->tags()->get(),
+                'tags' => $customer->customer_tags()->get(),
                 'last_shipping_confirmed_today' => $last_shipping_confirmed_today,
             ];
             // 荷主に紐付いている進捗を取得
@@ -65,7 +65,7 @@ class ProgressService
         // 進捗情報を格納する配列をセット
         $progress_arr = [];
         $progress_ratio_arr = [];
-        // 荷主が紐付いている営業所を取得
+        // 荷主が紐付いている拠点を取得
         $bases = Base::join('customers', 'customers.base_id', 'bases.base_id')->orderBy('bases.base_id', 'asc')->get();
         // 拠点の分だけループ
         foreach($bases as $base){

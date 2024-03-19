@@ -9,6 +9,7 @@
                 <li><a href="{{ route('customer.index') }}">荷主マスタ</a></li>
                 <li><a href="{{ route('item.index') }}">項目マスタ</a></li>
                 <li><a href="{{ route('tag.index') }}">タグマスタ</a></li>
+                <li><a href="{{ route('customer_tag.index') }}">荷主タグマスタ</a></li>
             </ul>
         </li>
         <li class="dropdown"><a href="#" class="trigger-drop">在庫</a>

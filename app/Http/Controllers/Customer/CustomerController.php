@@ -26,7 +26,7 @@ class CustomerController extends Controller
 
     public function create_index()
     {
-        // 営業所を全て取得
+        // 拠点を全て取得
         $bases = Base::getAll()->get();
         return view('customer.create')->with([
             'bases' => $bases,
@@ -49,7 +49,7 @@ class CustomerController extends Controller
     {
         // 荷主を取得
         $customer = Customer::getSpecify($request->customer_code)->first();
-        // 営業所を全て取得
+        // 拠点を全て取得
         $bases = Base::getAll()->get();
         return view('customer.update')->with([
             'customer' => $customer,

@@ -24,6 +24,8 @@ export default defineConfig({
                 'resources/js/item/item.js',
                 // タグマスタ
                 'resources/js/tag/tag.js',
+                // 荷主タグマスタ
+                'resources/js/customer_tag/customer_tag.js',
             ],
         ),
     ],

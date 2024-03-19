@@ -1,6 +1,6 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-c7c3b557.css",
+    "file": "assets/app-2f6e7f24.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -13,6 +13,11 @@
     "file": "assets/customer-4a779e29.js",
     "isEntry": true,
     "src": "resources/js/customer/customer.js"
+  },
+  "resources/js/customer_tag/customer_tag.js": {
+    "file": "assets/customer_tag-accdcd3f.js",
+    "isEntry": true,
+    "src": "resources/js/customer_tag/customer_tag.js"
   },
   "resources/js/item/item.js": {
     "file": "assets/item-d2699e17.js",
