@@ -13,11 +13,8 @@ class Role extends Model
     // 操作可能なカラムを定義
     protected $fillable = [
         'role_name',
-        'role_operation_is_available',
-        'user_operation_is_available',
-        'base_operation_is_available',
-        'customer_operation_is_available',
-        'item_operation_is_available',
+        'master_operation_is_available',
+        'management_operation_is_available',
     ];
     // 全て取得
     public static function getAll()

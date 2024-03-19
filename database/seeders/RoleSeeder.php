@@ -15,11 +15,8 @@ class RoleSeeder extends Seeder
     {
         Role::create([
             'role_name' => 'システム管理者',
-            'role_operation_is_available' => 1,
-            'user_operation_is_available' => 1,
-            'base_operation_is_available' => 1,
-            'customer_operation_is_available' => 1,
-            'item_operation_is_available' => 1,
+            'master_operation_is_available' => 1,
+            'management_operation_is_available' => 1,
         ]);
         Role::create([
             'role_name' => '一般',

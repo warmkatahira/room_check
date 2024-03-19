@@ -14,11 +14,8 @@ return new class extends Migration
         Schema::create('roles', function (Blueprint $table) {
             $table->increments('role_id');
             $table->string('role_name', 20);
-            $table->boolean('role_operation_is_available')->default(0);
-            $table->boolean('user_operation_is_available')->default(0);
-            $table->boolean('base_operation_is_available')->default(0);
-            $table->boolean('customer_operation_is_available')->default(0);
-            $table->boolean('item_operation_is_available')->default(0);
+            $table->boolean('master_operation_is_available')->default(0);
+            $table->boolean('management_operation_is_available')->default(0);
             $table->timestamps();
         });
     }

@@ -16,6 +16,8 @@ use App\Http\Controllers\Tag\TagController;
 use App\Http\Controllers\CustomerTag\CustomerTagController;
 // +-+-+-+-+-+-+-+- ユーザー +-+-+-+-+-+-+-+-
 use App\Http\Controllers\User\UserController;
+// +-+-+-+-+-+-+-+- 権限 +-+-+-+-+-+-+-+-
+use App\Http\Controllers\Role\RoleController;
 
 // ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆ Welcome ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆
     // -+-+-+-+-+-+-+-+-+-+-+-+ Welcome -+-+-+-+-+-+-+-+-+-+-+-+
@@ -64,11 +66,20 @@ Route::middleware(['auth'])->group(function () {
         Route::get('update', 'update_index')->name('update_index');
         Route::post('update', 'update')->name('update');
     });
-    // ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆ 荷主タグ ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆
+    // ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆ ユーザー ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆
     Route::controller(UserController::class)->prefix('user')->name('user.')->group(function(){
         Route::get('', 'index')->name('index');
         Route::get('update', 'update_index')->name('update_index');
         Route::post('update', 'update')->name('update');
+    });
+    // ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆ 権限 ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆
+    Route::controller(RoleController::class)->prefix('role')->name('role.')->group(function(){
+        Route::get('', 'index')->name('index');
+        Route::get('create', 'create_index')->name('create_index');
+        Route::post('create', 'create')->name('create');
+        Route::get('update', 'update_index')->name('update_index');
+        Route::post('update', 'update')->name('update');
+        Route::post('delete', 'delete')->name('delete');
     });
     
 });
