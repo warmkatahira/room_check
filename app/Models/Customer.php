@@ -51,6 +51,6 @@ class Customer extends Model
     // tagsテーブルとのリレーション(中間テーブル用)
     public function tags()
     {
-        return $this->belongsToMany(Tag::class, 'customer_tag', 'customer_code', 'tag_id');
+        return $this->belongsToMany(Tag::class, 'customer_tag', 'customer_code', 'tag_id')->withTimeStamps();
     }
 }

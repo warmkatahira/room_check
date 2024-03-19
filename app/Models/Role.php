@@ -19,4 +19,14 @@ class Role extends Model
         'customer_operation_is_available',
         'item_operation_is_available',
     ];
+    // 全て取得
+    public static function getAll()
+    {
+        return self::orderBy('role_id', 'asc');
+    }
+    // 指定したレコードを取得
+    public static function getSpecify($role_id)
+    {
+        return self::where('role_id', $role_id);
+    }
 }

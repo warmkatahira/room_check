@@ -14,6 +14,8 @@ use App\Http\Controllers\Item\ItemController;
 use App\Http\Controllers\Tag\TagController;
 // +-+-+-+-+-+-+-+- 荷主タグ +-+-+-+-+-+-+-+-
 use App\Http\Controllers\CustomerTag\CustomerTagController;
+// +-+-+-+-+-+-+-+- ユーザー +-+-+-+-+-+-+-+-
+use App\Http\Controllers\User\UserController;
 
 // ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆ Welcome ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆
     // -+-+-+-+-+-+-+-+-+-+-+-+ Welcome -+-+-+-+-+-+-+-+-+-+-+-+
@@ -58,6 +60,12 @@ Route::middleware(['auth'])->group(function () {
     });
     // ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆ 荷主タグ ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆
     Route::controller(CustomerTagController::class)->prefix('customer_tag')->name('customer_tag.')->group(function(){
+        Route::get('', 'index')->name('index');
+        Route::get('update', 'update_index')->name('update_index');
+        Route::post('update', 'update')->name('update');
+    });
+    // ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆ 荷主タグ ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆
+    Route::controller(UserController::class)->prefix('user')->name('user.')->group(function(){
         Route::get('', 'index')->name('index');
         Route::get('update', 'update_index')->name('update_index');
         Route::post('update', 'update')->name('update');

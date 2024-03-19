@@ -34,6 +34,11 @@
     "isEntry": true,
     "src": "resources/js/tag/tag.js"
   },
+  "resources/js/user/user.js": {
+    "file": "assets/user-c47ba58d.js",
+    "isEntry": true,
+    "src": "resources/js/user/user.js"
+  },
   "resources/scss/navigation.scss": {
     "file": "assets/navigation-63e62e6e.css",
     "isEntry": true,

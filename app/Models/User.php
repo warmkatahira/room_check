@@ -17,10 +17,8 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    // オートインクリメント無効化
-    public $incrementing = false;
     // 主キーカラムを変更
-    protected $primaryKey = 'user_id';
+    protected $primaryKey = 'id';
     // 操作可能なカラムを定義
     protected $fillable = [
         'user_id',
@@ -29,6 +27,21 @@ class User extends Authenticatable
         'role_id',
         'status',
     ];
+    // 全て取得
+    public static function getAll()
+    {
+        return self::orderBy('id', 'asc');
+    }
+    // 指定したレコードを取得
+    public static function getSpecify($user_id)
+    {
+        return self::where('user_id', $user_id);
+    }
+    // rolesテーブルとのリレーション
+    public function role()
+    {
+        return $this->belongsTo(Role::class, 'role_id', 'role_id');
+    }
 
     /**
      * The attributes that should be hidden for serialization.

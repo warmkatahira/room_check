@@ -27,7 +27,7 @@
             @if(isset($value['tags']) && $value['tags']->count() > 0)
                 <div class="{{ $bg }} px-1 py-1 grid grid-cols-12 gap-2">
                     @foreach($value['tags'] as $tag)
-                        <span class="col-span-6 xl:col-span-4 text-xs text-white text-center"><i class="las la-tag"></i>{{ $tag->tag_name }}</span>
+                        <span class="col-span-6 xl:col-span-4 text-xs text-white text-center"><i class="las la-tag mr-1"></i>{{ $tag->tag_name }}</span>
                     @endforeach
                 </div>
             @endif

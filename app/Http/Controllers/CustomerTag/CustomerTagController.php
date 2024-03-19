@@ -10,8 +10,6 @@ use App\Models\CustomerTag;
 use App\Models\Tag;
 // サービス
 use App\Services\CustomerTag\CustomerTagService;
-// リクエスト
-use App\Http\Requests\CustomerTagUpdateRequest;
 
 class CustomerTagController extends Controller
 {

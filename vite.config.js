@@ -26,6 +26,8 @@ export default defineConfig({
                 'resources/js/tag/tag.js',
                 // 荷主タグマスタ
                 'resources/js/customer_tag/customer_tag.js',
+                // ユーザー管理
+                'resources/js/user/user.js',
             ],
         ),
     ],
