@@ -4,20 +4,24 @@
     <a href="{{ route('progress.customer') }}" class="logo">ミエル</a>
     <ul class="links flex">
         <li class="dropdown"><a href="{{ route('progress.customer') }}" class="trigger-drop">進捗</a></li>
-        <li class="dropdown"><a class="trigger-drop cursor-pointer">マスタ</a>
-            <ul class="drop">
-                <li><a href="{{ route('customer.index') }}">荷主マスタ</a></li>
-                <li><a href="{{ route('item.index') }}">項目マスタ</a></li>
-                <li><a href="{{ route('tag.index') }}">タグマスタ</a></li>
-                <li><a href="{{ route('customer_tag.index') }}">荷主タグマスタ</a></li>
-            </ul>
-        </li>
-        <li class="dropdown"><a class="trigger-drop cursor-pointer">管理</a>
-            <ul class="drop">
-                <li><a href="{{ route('user.index') }}">ユーザー管理</a></li>
-                <li><a href="{{ route('role.index') }}">権限管理</a></li>
-            </ul>
-        </li>
+        @can('masterOperationIsAvailable')
+            <li class="dropdown"><a class="trigger-drop cursor-pointer">マスタ</a>
+                <ul class="drop">
+                    <li><a href="{{ route('customer.index') }}">荷主マスタ</a></li>
+                    <li><a href="{{ route('item.index') }}">項目マスタ</a></li>
+                    <li><a href="{{ route('tag.index') }}">タグマスタ</a></li>
+                    <li><a href="{{ route('customer_tag.index') }}">荷主タグマスタ</a></li>
+                </ul>
+            </li>
+        @endcan
+        @can('managementOperationIsAvailable')
+            <li class="dropdown"><a class="trigger-drop cursor-pointer">管理</a>
+                <ul class="drop">
+                    <li><a href="{{ route('user.index') }}">ユーザー管理</a></li>
+                    <li><a href="{{ route('role.index') }}">権限管理</a></li>
+                </ul>
+            </li>
+        @endif
     </ul>
     <form method="POST" action="{{ route('logout') }}" class="m-0 logout">
         @csrf

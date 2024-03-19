@@ -9,8 +9,7 @@ use App\Models\Role;
 // サービス
 use App\Services\Role\RoleService;
 // リクエスト
-use App\Http\Requests\RoleCreateRequest;
-use App\Http\Requests\RoleUpdateRequest;
+use App\Http\Requests\RoleCreateUpdateRequest;
 
 class RoleController extends Controller
 {
@@ -25,52 +24,59 @@ class RoleController extends Controller
 
     public function create_index()
     {
-        return view('item.create')->with([
+        return view('role.create')->with([
         ]);
     }
 
-    public function create(ItemCreateRequest $request)
+    public function create(RoleCreateUpdateRequest $request)
     {
         // インスタンス化
-        $ItemService = new ItemService;
-        // 項目を追加
-        $ItemService->createItem($request);
-        return redirect()->route('item.index')->with([
+        $RoleService = new RoleService;
+        // 権限を追加
+        $RoleService->createRole($request);
+        return redirect()->route('role.index')->with([
             'alert_type' => 'success',
-            'alert_message' => '項目追加が完了しました。',
+            'alert_message' => '権限追加が完了しました。',
         ]);
     }
 
     public function update_index(Request $request)
     {
-        // 項目を取得
-        $item = Item::getSpecify($request->item_code)->first();
-        return view('item.update')->with([
-            'item' => $item,
+        // 権限を取得
+        $role = Role::getSpecify($request->role_id)->first();
+        return view('role.update')->with([
+            'role' => $role,
         ]);
     }
 
-    public function update(ItemUpdateRequest $request)
+    public function update(RoleCreateUpdateRequest $request)
     {
         // インスタンス化
-        $ItemService = new ItemService;
-        // 項目を更新
-        $ItemService->updateItem($request);
-        return redirect()->route('item.index')->with([
+        $RoleService = new RoleService;
+        // 権限を更新
+        $RoleService->updateRole($request);
+        return redirect()->route('role.index')->with([
             'alert_type' => 'success',
-            'alert_message' => '項目更新が完了しました。',
+            'alert_message' => '権限更新が完了しました。',
         ]);
     }
 
     public function delete(Request $request)
     {
         // インスタンス化
-        $ItemService = new ItemService;
-        // 項目を削除
-        $ItemService->deleteItem($request);
-        return redirect()->route('item.index')->with([
+        $RoleService = new RoleService;
+        // 紐付いているユーザーがいれば中断
+        if(Role::getSpecify($request->role_id)->first()->users->count() > 0){
+            return redirect()->back()->with([
+                'alert_type' => 'error',
+                'alert_message' => '紐付いているユーザーがいる為、削除できませんでした。',
+            ]);
+        }
+        // 権限を削除
+        $RoleService->deleteRole($request);
+        return redirect()->route('role.index')->with([
             'alert_type' => 'success',
-            'alert_message' => '項目削除が完了しました。',
+            'alert_message' => '権限削除が完了しました。',
         ]);
     }
 }

@@ -29,6 +29,11 @@
     "isEntry": true,
     "src": "resources/js/progress/category_select.js"
   },
+  "resources/js/role/role.js": {
+    "file": "assets/role-009f64bb.js",
+    "isEntry": true,
+    "src": "resources/js/role/role.js"
+  },
   "resources/js/tag/tag.js": {
     "file": "assets/tag-b2e18c5f.js",
     "isEntry": true,

@@ -7,9 +7,10 @@
         <table class="text-xs block whitespace-nowrap">
             <thead>
                 <tr class="text-center text-white bg-gray-600 sticky top-0">
-                    <th class="font-thin py-3 px-2">権限</th>
+                    <th class="font-thin py-3 px-2">権限名</th>
                     <th class="font-thin py-3 px-2">マスタ操作</th>
                     <th class="font-thin py-3 px-2">管理操作</th>
+                    <th class="font-thin py-3 px-2">設定ユーザー数</th>
                 </tr>
             </thead>
             <tbody class="bg-white">
@@ -20,6 +21,7 @@
                         </td>
                         <td class="py-1 px-2 border text-center">{{ $role->master_operation_is_available ? '有効' : '無効' }}</td>
                         <td class="py-1 px-2 border text-center">{{ $role->management_operation_is_available ? '有効' : '無効' }}</td>
+                        <td class="py-1 px-2 border text-right">{{ $role->users->count() }}</td>
                     </tr>
                 @endforeach
             </tbody>

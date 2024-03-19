@@ -7,30 +7,29 @@ use App\Models\Role;
 
 class RoleService
 {
-    // 項目を追加
-    public function createItem($request){
-        Item::create([
-            'item_code' => $request->item_code,
-            'item_name' => $request->item_name,
-            'item_unit' => $request->item_unit,
-            'item_sort_order' => $request->item_sort_order,
+    // 権限を追加
+    public function createRole($request){
+        Role::create([
+            'role_name' => $request->role_name,
+            'master_operation_is_available' => $request->master_operation_is_available,
+            'management_operation_is_available' => $request->management_operation_is_available,
         ]);
         return;
     }
 
-    // 項目を更新
-    public function updateItem($request){
-        Item::where('item_code', $request->item_code)->update([
-            'item_name' => $request->item_name,
-            'item_unit' => $request->item_unit,
-            'item_sort_order' => $request->item_sort_order,
+    // 権限を更新
+    public function updateRole($request){
+        Role::where('role_id', $request->role_id)->update([
+            'role_name' => $request->role_name,
+            'master_operation_is_available' => $request->master_operation_is_available,
+            'management_operation_is_available' => $request->management_operation_is_available,
         ]);
         return;
     }
 
-    // 項目を削除
-    public function deleteItem($request){
-        Item::where('item_code', $request->item_code)->delete();
+    // 権限を削除
+    public function deleteRole($request){
+        Role::where('role_id', $request->role_id)->delete();
         return;
     }
 }

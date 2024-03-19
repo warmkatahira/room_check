@@ -28,6 +28,8 @@ export default defineConfig({
                 'resources/js/customer_tag/customer_tag.js',
                 // ユーザー管理
                 'resources/js/user/user.js',
+                // 権限管理
+                'resources/js/role/role.js',
             ],
         ),
     ],
