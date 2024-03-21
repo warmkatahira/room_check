@@ -151,8 +151,12 @@ class ProgressService
     // 進捗率を取得
     public function getProgressRatio($base_quantity, $inspection_incomplete_quantity)
     {
-        // 母数と残数がnull以外であれば取得する
+        // 母数と残数がnullであれば取得する
         if(!is_null($base_quantity) && !is_null($inspection_incomplete_quantity)){
+            // 母数が0であれば0を返す
+            if($base_quantity == 0){
+                return 0;
+            }
             // ((母数 - 残数) / 母数) × 100
             return (($base_quantity - $inspection_incomplete_quantity) / $base_quantity) * 100;
         }
