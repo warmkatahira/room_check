@@ -1,3 +1,5 @@
+@vite(['resources/js/window_update.js'])
+
 <x-app-layout>
     <!-- カテゴリ選択 -->
     <x-progress.category-select />

@@ -13,6 +13,7 @@ export default defineConfig({
                 // 共通
                 'resources/css/app.css',
                 'resources/js/app.js',
+                'resources/js/window_update.js',
                 'resources/scss/theme.scss',
                 'resources/scss/navigation.scss',
                 'resources/scss/navigation_hamburger.scss',

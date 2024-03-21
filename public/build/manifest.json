@@ -44,6 +44,11 @@
     "isEntry": true,
     "src": "resources/js/user/user.js"
   },
+  "resources/js/window_update.js": {
+    "file": "assets/window_update-ff7a9513.js",
+    "isEntry": true,
+    "src": "resources/js/window_update.js"
+  },
   "resources/scss/navigation.scss": {
     "file": "assets/navigation-63e62e6e.css",
     "isEntry": true,
