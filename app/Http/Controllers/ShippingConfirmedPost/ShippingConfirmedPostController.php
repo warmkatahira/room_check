@@ -13,9 +13,9 @@ class ShippingConfirmedPostController extends Controller
 {
     public function post(Request $request)
     {
-        // 指定した荷主の最終出荷確定日を更新
+        // 指定した荷主の出荷確定日時を更新
         Customer::where('customer_code', $request->customer_code)->update([
-            'last_shipping_confirmed_date' => CarbonImmutable::now()->format('Y-m-d'),
+            'shipping_confirmed_at' => CarbonImmutable::now(),
         ]);
         return response()->json([
             "message" => 'OK',

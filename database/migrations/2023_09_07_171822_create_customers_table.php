@@ -15,7 +15,7 @@ return new class extends Migration
             $table->string('customer_code', 20)->primary();
             $table->string('customer_name', 20);
             $table->string('base_id', 20);
-            $table->date('last_shipping_confirmed_date')->nullable();
+            $table->timestamp('shipping_confirmed_at')->nullable();
             $table->timestamps();
             // 外部キー制約
             $table->foreign('base_id')->references('base_id')->on('bases');

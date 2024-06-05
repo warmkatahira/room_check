@@ -29,10 +29,10 @@ class ProgressService
         $customers = Customer::with('progresses')->orderBy('updated_at', 'desc')->get();
         // 荷主の分だけループ
         foreach($customers as $customer){
-            // 最終出荷確定日が本日であれば「True」、違えば「False」
-            $last_shipping_confirmed_today = false;
-            if($customer->last_shipping_confirmed_date == CarbonImmutable::now()->format('Y-m-d')){
-                $last_shipping_confirmed_today = true;
+            // 出荷確定日時が本日であれば「True」、違えば「False」
+            $shipping_confirmed_at_today = false;
+            if(!is_null($customer->shipping_confirmed_at) && CarbonImmutable::parse($customer->shipping_confirmed_at)->format('Y-m-d') == CarbonImmutable::now()->format('Y-m-d')){
+                $shipping_confirmed_at_today = true;
             }
             // 今回の拠点IDのキーを配列にセットすると同時に、項目も一式セット
             $progress_arr[$customer->customer_name] = [
@@ -40,7 +40,8 @@ class ProgressService
                 'base_name' => $customer->base->base_name,
                 'last_updated' => $customer->updated_at,
                 'tags' => $customer->customer_tags()->get(),
-                'last_shipping_confirmed_today' => $last_shipping_confirmed_today,
+                'shipping_confirmed_at' => $customer->shipping_confirmed_at,
+                'shipping_confirmed_at_today' => $shipping_confirmed_at_today,
             ];
             // 荷主に紐付いている進捗を取得
             $progresses = $customer->progresses()->get();

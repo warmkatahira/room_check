@@ -12,10 +12,19 @@
                 $bg_sub = 'bg-theme-sub';
                 $border = 'border-theme-main';
                 // 配列があって、値がTrueであれば色を変える
-                if(isset($value['last_shipping_confirmed_today']) && $value['last_shipping_confirmed_today']){
-                    $bg = 'bg-orange-500';
-                    $bg_sub = 'bg-orange-200';
-                    $border = 'border-orange-500';
+                if(isset($value['shipping_confirmed_at_today']) && $value['shipping_confirmed_at_today']){
+                    // 荷主の更新時間よりも出荷確定日時の方が最新の場合(出荷確定後、動いていない)
+                    if($value['last_updated'] <= $value['shipping_confirmed_at']){
+                        $bg = 'bg-orange-500';
+                        $bg_sub = 'bg-orange-200';
+                        $border = 'border-orange-500';
+                    }
+                    // 出荷確定日時よりも荷主の更新時間の方が最新の場合(出荷確定後、動いている)
+                    if($value['last_updated'] > $value['shipping_confirmed_at']){
+                        $bg = 'bg-sky-500';
+                        $bg_sub = 'bg-sky-200';
+                        $border = 'border-sky-500';
+                    }
                 }
             @endphp
             <div class="{{ $bg }} py-2 px-3">

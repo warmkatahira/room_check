@@ -17,7 +17,7 @@ class Customer extends Model
         'customer_code',
         'customer_name',
         'base_id',
-        'last_shipping_confirmed_date',
+        'shipping_confirmed_at',
     ];
     // 全て取得
     public static function getAll()
