@@ -35,8 +35,25 @@
             <input type="checkbox" class="menu-btn" id="menu-btn">
             <label for="menu-btn" class="menu-icon"><span class="navicon"></span></label>
             <ul class="menu border-b-4 border-white">
-                <li><a href="">進捗一覧</a></li>
-                <li><a href="">荷主一覧</a></li>
+                <li class="dropdown"><a href="{{ route('progress.customer') }}" class="trigger-drop">進捗</a></li>
+                @can('masterOperationIsAvailable')
+                    <li class="dropdown"><a class="trigger-drop cursor-pointer">マスタ</a>
+                        <ul class="drop">
+                            <li><a href="{{ route('customer.index') }}">荷主マスタ</a></li>
+                            <li><a href="{{ route('item.index') }}">項目マスタ</a></li>
+                            <li><a href="{{ route('tag.index') }}">タグマスタ</a></li>
+                            <li><a href="{{ route('customer_tag.index') }}">荷主タグマスタ</a></li>
+                        </ul>
+                    </li>
+                @endcan
+                @can('managementOperationIsAvailable')
+                    <li class="dropdown"><a class="trigger-drop cursor-pointer">管理</a>
+                        <ul class="drop">
+                            <li><a href="{{ route('user.index') }}">ユーザー管理</a></li>
+                            <li><a href="{{ route('role.index') }}">権限管理</a></li>
+                        </ul>
+                    </li>
+                @endif
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <li class=""><a href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">ログアウト</a></li>
