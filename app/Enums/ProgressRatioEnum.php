@@ -19,8 +19,12 @@ final class ProgressRatioEnum extends Enum
     const SHIPMENT_QUANTITY_PCS_PROGRESS_RATIO_NAME     = '進捗率(PCS数)';
     const SHIPMENT_QUANTITY_PCS                         = 'shipment_quantity_pcs';
     const INSPECTION_INCOMPLETE_SHIPMENT_QUANTITY_PCS   = 'inspection_incomplete_shipment_quantity_pcs';
-    // CS数
-    const SHIPMENT_QUANTITY_CS_PROGRESS_RATIO_NAME     = '進捗率(CS数)';
+    // B/L数
+    const SHIPMENT_QUANTITY_BL_PROGRESS_RATIO_NAME     = '進捗率(B/L数)';
+    const SHIPMENT_QUANTITY_BL                         = 'shipment_quantity_bl';
+    const INSPECTION_INCOMPLETE_SHIPMENT_QUANTITY_BL   = 'inspection_incomplete_shipment_quantity_bl';
+    // C/S数
+    const SHIPMENT_QUANTITY_CS_PROGRESS_RATIO_NAME     = '進捗率(C/S数)';
     const SHIPMENT_QUANTITY_CS                         = 'shipment_quantity_cs';
     const INSPECTION_INCOMPLETE_SHIPMENT_QUANTITY_CS   = 'inspection_incomplete_shipment_quantity_cs';
 }

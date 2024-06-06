@@ -54,6 +54,7 @@ class ProgressService
             // 進捗率を取得
             $progress_ratio_arr[$customer->customer_name][ProgressRatioEnum::SHIPMENT_ORDER_QUANTITY_PROGRESS_RATIO_NAME] = $this->getProgressRatio($progress_arr[$customer->customer_name]['item'][ProgressRatioEnum::SHIPMENT_ORDER_QUANTITY]['value'], $progress_arr[$customer->customer_name]['item'][ProgressRatioEnum::INSPECTION_INCOMPLETE_SHIPMENT_ORDER_QUANTITY]['value']);
             $progress_ratio_arr[$customer->customer_name][ProgressRatioEnum::SHIPMENT_QUANTITY_PCS_PROGRESS_RATIO_NAME] = $this->getProgressRatio($progress_arr[$customer->customer_name]['item'][ProgressRatioEnum::SHIPMENT_QUANTITY_PCS]['value'], $progress_arr[$customer->customer_name]['item'][ProgressRatioEnum::INSPECTION_INCOMPLETE_SHIPMENT_QUANTITY_PCS]['value']);
+            $progress_ratio_arr[$customer->customer_name][ProgressRatioEnum::SHIPMENT_QUANTITY_BL_PROGRESS_RATIO_NAME] = $this->getProgressRatio($progress_arr[$customer->customer_name]['item'][ProgressRatioEnum::SHIPMENT_QUANTITY_BL]['value'], $progress_arr[$customer->customer_name]['item'][ProgressRatioEnum::INSPECTION_INCOMPLETE_SHIPMENT_QUANTITY_BL]['value']);
             $progress_ratio_arr[$customer->customer_name][ProgressRatioEnum::SHIPMENT_QUANTITY_CS_PROGRESS_RATIO_NAME] = $this->getProgressRatio($progress_arr[$customer->customer_name]['item'][ProgressRatioEnum::SHIPMENT_QUANTITY_CS]['value'], $progress_arr[$customer->customer_name]['item'][ProgressRatioEnum::INSPECTION_INCOMPLETE_SHIPMENT_QUANTITY_CS]['value']);
         }
         return compact('progress_arr', 'progress_ratio_arr');
@@ -90,6 +91,7 @@ class ProgressService
             // 進捗率を取得
             $progress_ratio_arr[$base->base_name][ProgressRatioEnum::SHIPMENT_ORDER_QUANTITY_PROGRESS_RATIO_NAME] = $this->getProgressRatio($progress_arr[$base->base_name]['item'][ProgressRatioEnum::SHIPMENT_ORDER_QUANTITY]['value'], $progress_arr[$base->base_name]['item'][ProgressRatioEnum::INSPECTION_INCOMPLETE_SHIPMENT_ORDER_QUANTITY]['value']);
             $progress_ratio_arr[$base->base_name][ProgressRatioEnum::SHIPMENT_QUANTITY_PCS_PROGRESS_RATIO_NAME] = $this->getProgressRatio($progress_arr[$base->base_name]['item'][ProgressRatioEnum::SHIPMENT_QUANTITY_PCS]['value'], $progress_arr[$base->base_name]['item'][ProgressRatioEnum::INSPECTION_INCOMPLETE_SHIPMENT_QUANTITY_PCS]['value']);
+            $progress_ratio_arr[$base->base_name][ProgressRatioEnum::SHIPMENT_QUANTITY_BL_PROGRESS_RATIO_NAME] = $this->getProgressRatio($progress_arr[$base->base_name]['item'][ProgressRatioEnum::SHIPMENT_QUANTITY_BL]['value'], $progress_arr[$base->base_name]['item'][ProgressRatioEnum::INSPECTION_INCOMPLETE_SHIPMENT_QUANTITY_BL]['value']);
             $progress_ratio_arr[$base->base_name][ProgressRatioEnum::SHIPMENT_QUANTITY_CS_PROGRESS_RATIO_NAME] = $this->getProgressRatio($progress_arr[$base->base_name]['item'][ProgressRatioEnum::SHIPMENT_QUANTITY_CS]['value'], $progress_arr[$base->base_name]['item'][ProgressRatioEnum::INSPECTION_INCOMPLETE_SHIPMENT_QUANTITY_CS]['value']);
         }
         return compact('progress_arr', 'progress_ratio_arr');
@@ -126,6 +128,7 @@ class ProgressService
             // 進捗率を取得
             $progress_ratio_arr[$tag->tag_name][ProgressRatioEnum::SHIPMENT_ORDER_QUANTITY_PROGRESS_RATIO_NAME] = $this->getProgressRatio($progress_arr[$tag->tag_name]['item'][ProgressRatioEnum::SHIPMENT_ORDER_QUANTITY]['value'], $progress_arr[$tag->tag_name]['item'][ProgressRatioEnum::INSPECTION_INCOMPLETE_SHIPMENT_ORDER_QUANTITY]['value']);
             $progress_ratio_arr[$tag->tag_name][ProgressRatioEnum::SHIPMENT_QUANTITY_PCS_PROGRESS_RATIO_NAME] = $this->getProgressRatio($progress_arr[$tag->tag_name]['item'][ProgressRatioEnum::SHIPMENT_QUANTITY_PCS]['value'], $progress_arr[$tag->tag_name]['item'][ProgressRatioEnum::INSPECTION_INCOMPLETE_SHIPMENT_QUANTITY_PCS]['value']);
+            $progress_ratio_arr[$tag->tag_name][ProgressRatioEnum::SHIPMENT_QUANTITY_BL_PROGRESS_RATIO_NAME] = $this->getProgressRatio($progress_arr[$tag->tag_name]['item'][ProgressRatioEnum::SHIPMENT_QUANTITY_BL]['value'], $progress_arr[$tag->tag_name]['item'][ProgressRatioEnum::INSPECTION_INCOMPLETE_SHIPMENT_QUANTITY_BL]['value']);
             $progress_ratio_arr[$tag->tag_name][ProgressRatioEnum::SHIPMENT_QUANTITY_CS_PROGRESS_RATIO_NAME] = $this->getProgressRatio($progress_arr[$tag->tag_name]['item'][ProgressRatioEnum::SHIPMENT_QUANTITY_CS]['value'], $progress_arr[$tag->tag_name]['item'][ProgressRatioEnum::INSPECTION_INCOMPLETE_SHIPMENT_QUANTITY_CS]['value']);
         }
         return compact('progress_arr', 'progress_ratio_arr');

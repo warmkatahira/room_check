@@ -38,16 +38,28 @@ class ItemSeeder extends Seeder
             'item_sort_order' => 4,
         ]);
         Item::create([
+            'item_code' => 'shipment_quantity_bl',
+            'item_name' => '出荷数',
+            'item_unit' => 'B/L',
+            'item_sort_order' => 5,
+        ]);
+        Item::create([
+            'item_code' => 'inspection_incomplete_shipment_quantity_bl',
+            'item_name' => '出荷検品残数',
+            'item_unit' => 'B/L',
+            'item_sort_order' => 6,
+        ]);
+        Item::create([
             'item_code' => 'shipment_quantity_cs',
             'item_name' => '出荷数',
             'item_unit' => 'C/S',
-            'item_sort_order' => 5,
+            'item_sort_order' => 7,
         ]);
         Item::create([
             'item_code' => 'inspection_incomplete_shipment_quantity_cs',
             'item_name' => '出荷検品残数',
             'item_unit' => 'C/S',
-            'item_sort_order' => 6,
+            'item_sort_order' => 8,
         ]);
     }
 }
