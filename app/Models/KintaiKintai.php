@@ -22,9 +22,10 @@ class KintaiKintai extends Model
         return self::where('work_day', CarbonImmutable::now()->format('Y-m-d'))
                 ->whereNull('finish_time')
                 ->join('employees', 'employees.employee_id', 'kintais.employee_id')
+                ->join('employee_categories', 'employee_categories.employee_category_id', 'employees.employee_category_id')
                 ->join('bases', 'bases.base_id', 'employees.base_id')
-                ->select('shortened_base_name', DB::raw('count(*) as working_count'))
-                ->groupBy('bases.base_id')
+                ->select('bases.base_id', 'shortened_base_name', 'employee_categories.employee_category_name', DB::raw('count(*) as working_count'))
+                ->groupBy('bases.base_id', 'employee_categories.employee_category_id')
                 ->orderBy('bases.base_id', 'asc')
                 ->get();
     }

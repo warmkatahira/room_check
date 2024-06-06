@@ -4,8 +4,6 @@ namespace App\Http\Controllers\Progress;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-// モデル
-use App\Models\KintaiKintai;
 // サービス
 use App\Services\Progress\ProgressService;
 
@@ -17,11 +15,11 @@ class ProgressController extends Controller
         $ProgressService = new ProgressService;
         // 荷主毎で集計した進捗を取得
         $data = $ProgressService->getProgressByCustomer();
-        // 現在の営業所毎の出勤人数を取得
-        $employee_count = KintaiKintai::getCurrentWorkingEmployeesCountByBase();
+        // 出勤中人数を拠点毎に整理
+        $working_info = $ProgressService->getWorkingInfo();
         return view('progress.customer')->with([
             'data' => $data,
-            'employee_count' => $employee_count,
+            'working_info' => $working_info,
         ]);
     }
 
@@ -31,11 +29,11 @@ class ProgressController extends Controller
         $ProgressService = new ProgressService;
         // 拠点毎で集計した進捗を取得
         $data = $ProgressService->getProgressByBase();
-        // 現在の営業所毎の出勤人数を取得
-        $employee_count = KintaiKintai::getCurrentWorkingEmployeesCountByBase();
+        // 出勤中人数を拠点毎に整理
+        $working_info = $ProgressService->getWorkingInfo();
         return view('progress.base')->with([
             'data' => $data,
-            'employee_count' => $employee_count,
+            'working_info' => $working_info,
         ]);
     }
 
@@ -45,11 +43,11 @@ class ProgressController extends Controller
         $ProgressService = new ProgressService;
         // タグ毎で集計した進捗を取得
         $data = $ProgressService->getProgressByTag();
-        // 現在の営業所毎の出勤人数を取得
-        $employee_count = KintaiKintai::getCurrentWorkingEmployeesCountByBase();
+        // 出勤中人数を拠点毎に整理
+        $working_info = $ProgressService->getWorkingInfo();
         return view('progress.tag')->with([
             'data' => $data,
-            'employee_count' => $employee_count,
+            'working_info' => $working_info,
         ]);
     }
 }

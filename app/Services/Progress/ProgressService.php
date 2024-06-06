@@ -8,6 +8,7 @@ use App\Models\Tag;
 use App\Models\CustomerTag;
 use App\Models\Item;
 use App\Models\Base;
+use App\Models\KintaiKintai;
 // 列挙
 use App\Enums\ProgressRatioEnum;
 // その他
@@ -162,5 +163,41 @@ class ProgressService
             return (($base_quantity - $inspection_incomplete_quantity) / $base_quantity) * 100;
         }
         return null;
+    }
+
+    // 出勤中人数を拠点毎に整理
+    public function getWorkingInfo()
+    {
+        // 現在の営業所毎の出勤人数を取得
+        $employee_count = KintaiKintai::getCurrentWorkingEmployeesCountByBase()->toArray();
+        // 出勤情報を格納する配列を用意
+        $working_info = [];
+        // 拠点の分だけループ処理
+        foreach(Base::getAll()->get() as $base){
+            // 配列に要素を追加
+            $working_info[$base->base_id] = [
+                '拠点' => '',
+                '社員' => 0,
+                'パート' => 0,
+            ];
+            // 出勤人数情報の分だけループ処理
+            foreach($employee_count as $key => $value){
+                // 拠点が同じである場合
+                if($value['base_id'] == $base->base_id){
+                    // 従業員区分に「社員」が含まれている場合と「パート」が含まれている場合で、計上する要素を可変
+                    if(strpos($value['employee_category_name'], '社員') !== false){
+                        $working_info[$base->base_id]['社員']+= $value['working_count'];
+                    }
+                    if(strpos($value['employee_category_name'], 'パート') !== false){
+                        $working_info[$base->base_id]['パート']+= $value['working_count'];
+                    }
+                    // 省略拠点名を格納
+                    $working_info[$base->base_id]['拠点'] = $value['shortened_base_name'];
+                    // 出勤人数情報を削除
+                    unset($employee_count[$key]);
+                }
+            }
+        }
+        return $working_info;
     }
 }

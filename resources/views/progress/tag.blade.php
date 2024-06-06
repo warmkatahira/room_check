@@ -2,7 +2,7 @@
 
 <x-app-layout>
     <!-- 出勤中人数 -->
-    <x-progress.current-working-employee :employeeCount="$employee_count" />
+    <x-progress.current-working-employee :workingInfo="$working_info" />
     <!-- カテゴリ選択 -->
     <x-progress.category-select />
     <!-- タグ単位 -->
