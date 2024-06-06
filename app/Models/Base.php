@@ -16,6 +16,7 @@ class Base extends Model
     protected $fillable = [
         'base_id',
         'base_name',
+        'shortened_base_name',
     ];
     // 全て取得
     public static function getAll()

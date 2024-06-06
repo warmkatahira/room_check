@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('bases', function (Blueprint $table) {
             $table->string('base_id', 20)->primary();
             $table->string('base_name', 20);
+            $table->string('shortened_base_name', 10);
             $table->timestamps();
         });
     }

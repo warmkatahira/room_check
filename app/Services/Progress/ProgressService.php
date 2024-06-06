@@ -179,7 +179,7 @@ class ProgressService
         foreach(Base::getAll()->get() as $base){
             // 配列に要素を追加
             $working_info[$base->base_id] = [
-                '拠点' => '',
+                '拠点' => $base->shortened_base_name,
                 '社員' => 0,
                 'パート' => 0,
             ];
@@ -194,8 +194,6 @@ class ProgressService
                     if(strpos($value['employee_category_name'], 'パート') !== false){
                         $working_info[$base->base_id]['パート']+= $value['working_count'];
                     }
-                    // 省略拠点名を格納
-                    $working_info[$base->base_id]['拠点'] = $value['shortened_base_name'];
                     // 出勤人数情報を削除
                     unset($employee_count[$key]);
                 }
