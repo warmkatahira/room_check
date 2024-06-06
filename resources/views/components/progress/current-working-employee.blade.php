@@ -1,7 +1,7 @@
 <p class="text-xl mb-0.5"><i class="las la-user la-lg"></i>出勤中人数</p>
 <div class="grid grid-cols-12 gap-4 mb-3">
     @foreach($workingInfo as $info)
-        <div class="col-span-4 xl:col-span-1 text-center">
+        <div class="col-span-6 xl:col-span-1 text-center">
             <p class="bg-black text-white">{{ $info['拠点'] }}</p>
             <div class="grid grid-cols-2 border-b border-gray-300">
                 <p class="bg-gray-300 text-sm py-2 col-span-1">社員</p>
