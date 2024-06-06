@@ -15,7 +15,7 @@
     "src": "resources/js/customer/customer.js"
   },
   "resources/js/customer_tag/customer_tag.js": {
-    "file": "assets/customer_tag-accdcd3f.js",
+    "file": "assets/customer_tag-b653cb20.js",
     "isEntry": true,
     "src": "resources/js/customer_tag/customer_tag.js"
   },

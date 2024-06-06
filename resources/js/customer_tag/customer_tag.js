@@ -9,7 +9,7 @@ $('#customer_tag_update_enter').on("click",function(){
 });
 
 // タグの削除が押下されたら
-$('.tag_delete').on("click",function(){
+$('body').on('click', '.tag_delete' , function() {
     $(this).remove();
 });
 
