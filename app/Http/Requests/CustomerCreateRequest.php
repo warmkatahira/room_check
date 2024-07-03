@@ -23,6 +23,7 @@ class CustomerCreateRequest extends FormRequest
     {
         return [
             'customer_code' => 'required|max:20|unique:customers,customer_code',
+            'customer_category' => 'required|max:20',
             'customer_name' => 'required|max:20',
             'base_id' => 'required|exists:bases,base_id',
         ];
@@ -42,6 +43,7 @@ class CustomerCreateRequest extends FormRequest
     {
         return [
             'customer_code' => '荷主コード',
+            'customer_category' => '荷主分類',
             'customer_name' => '荷主名',
             'base_id' => '拠点名',
         ];

@@ -22,6 +22,7 @@ class CustomerUpdateRequest extends FormRequest
     public function rules()
     {
         return [
+            'customer_category' => 'required|max:20',
             'customer_name' => 'required|max:20',
             'base_id' => 'required|exists:bases,base_id',
         ];
@@ -39,6 +40,7 @@ class CustomerUpdateRequest extends FormRequest
     public function attributes()
     {
         return [
+            'customer_category' => '荷主分類',
             'customer_name' => '荷主名',
             'base_id' => '拠点名',
         ];
