@@ -39,7 +39,7 @@
             @auth
                 <a href="{{ route('top.index') }}" class="text-5xl bg-theme-main text-white py-20 px-36"><i class="las la-meh-rolling-eyes mr-2 la-lg"></i>トップ</a>
             @else
-                <a href="{{ route('login') }}" class="text-5xl bg-theme-main text-white py-20 px-36"><i class="las la-sign-in-alt mr-2 la-lg"></i>ログイン</a>
+                <a href="{{ route('login') }}" class="text-5xl bg-theme-main text-white py-20 px-10 w-full xl:w-96"><i class="las la-sign-in-alt mr-2 la-lg"></i>ログイン</a>
             @endauth
         </div>
     </body>
