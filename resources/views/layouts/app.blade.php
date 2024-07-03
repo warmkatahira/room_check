@@ -23,7 +23,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Arvo:wght@700&family=Kosugi+Maru&display=swap" rel="stylesheet">
 
         <!-- Lordicon -->
-        <script src="https://cdn.lordicon.com/pzdvqjsp.js"></script>
+        <script src="https://cdn.lordicon.com/lordicon.js"></script>
 
         <!-- toastr.js -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">

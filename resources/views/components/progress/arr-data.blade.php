@@ -11,6 +11,7 @@
                 $bg = 'bg-theme-main';
                 $bg_sub = 'bg-theme-sub';
                 $border = 'border-theme-main';
+                $shipping_confirmed = false;
                 // 配列があって、値がTrueであれば色を変える
                 if(isset($value['shipping_confirmed_at_today']) && $value['shipping_confirmed_at_today']){
                     // 荷主の更新時間よりも出荷確定日時の方が最新の場合(出荷確定後、動いていない)
@@ -18,6 +19,7 @@
                         $bg = 'bg-orange-500';
                         $bg_sub = 'bg-orange-200';
                         $border = 'border-orange-500';
+                        $shipping_confirmed = true;
                     }
                     // 出荷確定日時よりも荷主の更新時間の方が最新の場合(出荷確定後、動いている)
                     if($value['last_updated'] > $value['shipping_confirmed_at']){
@@ -27,9 +29,14 @@
                     }
                 }
             @endphp
-            <div class="{{ $bg }} py-2 px-3">
+            <div class="{{ $bg }} py-2 px-3 flex flex-col">
                 @if(isset($value['base_name']))
-                    <p class="text-white text-xs text-left mb-1">{{ $value['base_name'] }}</p>
+                    <div class="flex flex-row">
+                        <p class="text-white text-xs mb-1">{{ $value['base_name'] }}</p>
+                        @if($shipping_confirmed)
+                            <lord-icon src="https://cdn.lordicon.com/ctlnzcle.json" trigger="loop" delay="1000" style="width:30px;height:30px" class="ml-auto"></lord-icon>
+                        @endif
+                    </div>
                 @endif
                 <p class="text-white text-center">{{ $key }}</p>
             </div>
