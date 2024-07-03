@@ -17,6 +17,10 @@ class ShippingConfirmedPostController extends Controller
         Customer::where('customer_code', $request->customer_code)->update([
             'shipping_confirmed_at' => CarbonImmutable::now(),
         ]);
+        // 荷主のupdated_atを更新
+        Customer::where('customer_code', $request->customer_code)->update([
+            'updated_at' => CarbonImmutable::now(),
+        ]);
         return response()->json([
             "message" => 'OK',
         ], 201);
