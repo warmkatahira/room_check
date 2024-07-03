@@ -20,5 +20,12 @@ class UserSeeder extends Seeder
             'role_id' => 1,
             'status' => 1,
         ]);
+        User::create([
+            'user_id' => 'user',
+            'user_name' => '共通ユーザー',
+            'password' => bcrypt('user12345'),
+            'role_id' => 2,
+            'status' => 1,
+        ]);
     }
 }
