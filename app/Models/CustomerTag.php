@@ -24,4 +24,12 @@ class CustomerTag extends Model
                 ->join('items', 'items.item_code', 'progresses.item_code')
                 ->orderBy('items.item_sort_order', 'asc');
     }
+    // タグに紐付いている荷主分類数を取得
+    public static function getCustomerCategoryCountByTag($tag_id)
+    {
+        return self::where('tag_id', $tag_id)
+                    ->join('customers', 'customers.customer_code', 'customer_tag.customer_code')
+                    ->distinct()
+                    ->count('customer_category');
+    }
 }

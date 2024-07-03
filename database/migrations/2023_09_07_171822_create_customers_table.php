@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->string('customer_code', 20)->primary();
+            $table->string('customer_category', 20);
             $table->string('customer_name', 20);
             $table->string('base_id', 20);
             $table->timestamp('shipping_confirmed_at')->nullable();

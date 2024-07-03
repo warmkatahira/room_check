@@ -15,6 +15,7 @@ class Customer extends Model
     // 操作可能なカラムを定義
     protected $fillable = [
         'customer_code',
+        'customer_category',
         'customer_name',
         'base_id',
         'shipping_confirmed_at',
@@ -52,5 +53,12 @@ class Customer extends Model
     public function tags()
     {
         return $this->belongsToMany(Tag::class, 'customer_tag', 'customer_code', 'tag_id')->withTimeStamps();
+    }
+    // 拠点に紐付いている荷主分類数を取得
+    public static function getCustomerCategoryCountByBase($base_id)
+    {
+        return self::where('base_id', $base_id)
+                    ->distinct()
+                    ->count('customer_category');
     }
 }
