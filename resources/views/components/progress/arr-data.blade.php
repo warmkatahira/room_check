@@ -34,7 +34,7 @@
                     <div class="flex flex-row">
                         <p class="text-white text-xs mb-1">{{ $value['base_name'] }}</p>
                         @if($shipping_confirmed)
-                            <lord-icon src="https://cdn.lordicon.com/ctlnzcle.json" trigger="loop" delay="1000" style="width:30px;height:30px" class="ml-auto"></lord-icon>
+                            <lord-icon src="https://cdn.lordicon.com/ctlnzcle.json" trigger="loop" delay="1000" style="width:35px;height:35px" class="ml-auto"></lord-icon>
                         @endif
                     </div>
                 @endif
