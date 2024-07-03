@@ -30,4 +30,12 @@ class Tag extends Model
     {
         return $this->belongsToMany(Customer::class, 'customer_tag', 'tag_id', 'customer_code')->withTimeStamps();
     }
+    // タグとしての進捗数を取得
+    public static function getProgressByTag($tag_id)
+    {
+        return self::where('tags.tag_id', $tag_id)
+                    ->join('customer_tag', 'customer_tag.tag_id', 'tags.tag_id')
+                    ->join('progresses', 'progresses.customer_code', 'customer_tag.customer_code')
+                    ->count();
+    }
 }

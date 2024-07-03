@@ -27,35 +27,40 @@ class ProgressService
         // その他情報を格納する配列をセット
         $tag_arr = [];
         // 荷主が紐付いている拠点を取得
-        $customers = Customer::with('progresses')->orderBy('updated_at', 'desc')->get();
+        $customers = Customer::with('progresses')
+                            ->orderBy('updated_at', 'desc')
+                            ->get();
         // 荷主の分だけループ
         foreach($customers as $customer){
-            // 出荷確定日時が本日であれば「True」、違えば「False」
-            $shipping_confirmed_at_today = false;
-            if(!is_null($customer->shipping_confirmed_at) && CarbonImmutable::parse($customer->shipping_confirmed_at)->format('Y-m-d') == CarbonImmutable::now()->format('Y-m-d')){
-                $shipping_confirmed_at_today = true;
+            // 進捗が存在する荷主のみ処理を継続
+            if($customer->progresses->count() > 0){
+                // 出荷確定日時が本日であれば「True」、違えば「False」
+                $shipping_confirmed_at_today = false;
+                if(!is_null($customer->shipping_confirmed_at) && CarbonImmutable::parse($customer->shipping_confirmed_at)->format('Y-m-d') == CarbonImmutable::now()->format('Y-m-d')){
+                    $shipping_confirmed_at_today = true;
+                }
+                // 今回の拠点IDのキーを配列にセットすると同時に、項目も一式セット
+                $progress_arr[$customer->customer_name] = [
+                    'item' => $item_arr,
+                    'base_name' => $customer->base->base_name,
+                    'last_updated' => $customer->updated_at,
+                    'tags' => $customer->customer_tags()->get(),
+                    'shipping_confirmed_at' => $customer->shipping_confirmed_at,
+                    'shipping_confirmed_at_today' => $shipping_confirmed_at_today,
+                ];
+                // 荷主に紐付いている進捗を取得
+                $progresses = $customer->progresses()->get();
+                // 進捗の分だけループ処理
+                foreach($progresses as $progress){
+                    // 値を更新する(valueがnullだったら0に対して更新)
+                    $progress_arr[$customer->customer_name]['item'][$progress->item_code]['value'] = (is_null($progress_arr[$customer->customer_name]['item'][$progress->item_code]['value']) ? 0 : $progress_arr[$customer->customer_name]['item'][$progress->item_code]['value']) + $progress->progress_value;
+                }
+                // 進捗率を取得
+                $progress_ratio_arr[$customer->customer_name][ProgressRatioEnum::SHIPMENT_ORDER_QUANTITY_PROGRESS_RATIO_NAME] = $this->getProgressRatio($progress_arr[$customer->customer_name]['item'][ProgressRatioEnum::SHIPMENT_ORDER_QUANTITY]['value'], $progress_arr[$customer->customer_name]['item'][ProgressRatioEnum::INSPECTION_INCOMPLETE_SHIPMENT_ORDER_QUANTITY]['value']);
+                $progress_ratio_arr[$customer->customer_name][ProgressRatioEnum::SHIPMENT_QUANTITY_PCS_PROGRESS_RATIO_NAME] = $this->getProgressRatio($progress_arr[$customer->customer_name]['item'][ProgressRatioEnum::SHIPMENT_QUANTITY_PCS]['value'], $progress_arr[$customer->customer_name]['item'][ProgressRatioEnum::INSPECTION_INCOMPLETE_SHIPMENT_QUANTITY_PCS]['value']);
+                $progress_ratio_arr[$customer->customer_name][ProgressRatioEnum::SHIPMENT_QUANTITY_BL_PROGRESS_RATIO_NAME] = $this->getProgressRatio($progress_arr[$customer->customer_name]['item'][ProgressRatioEnum::SHIPMENT_QUANTITY_BL]['value'], $progress_arr[$customer->customer_name]['item'][ProgressRatioEnum::INSPECTION_INCOMPLETE_SHIPMENT_QUANTITY_BL]['value']);
+                $progress_ratio_arr[$customer->customer_name][ProgressRatioEnum::SHIPMENT_QUANTITY_CS_PROGRESS_RATIO_NAME] = $this->getProgressRatio($progress_arr[$customer->customer_name]['item'][ProgressRatioEnum::SHIPMENT_QUANTITY_CS]['value'], $progress_arr[$customer->customer_name]['item'][ProgressRatioEnum::INSPECTION_INCOMPLETE_SHIPMENT_QUANTITY_CS]['value']);
             }
-            // 今回の拠点IDのキーを配列にセットすると同時に、項目も一式セット
-            $progress_arr[$customer->customer_name] = [
-                'item' => $item_arr,
-                'base_name' => $customer->base->base_name,
-                'last_updated' => $customer->updated_at,
-                'tags' => $customer->customer_tags()->get(),
-                'shipping_confirmed_at' => $customer->shipping_confirmed_at,
-                'shipping_confirmed_at_today' => $shipping_confirmed_at_today,
-            ];
-            // 荷主に紐付いている進捗を取得
-            $progresses = $customer->progresses()->get();
-            // 進捗の分だけループ処理
-            foreach($progresses as $progress){
-                // 値を更新する(valueがnullだったら0に対して更新)
-                $progress_arr[$customer->customer_name]['item'][$progress->item_code]['value'] = (is_null($progress_arr[$customer->customer_name]['item'][$progress->item_code]['value']) ? 0 : $progress_arr[$customer->customer_name]['item'][$progress->item_code]['value']) + $progress->progress_value;
-            }
-            // 進捗率を取得
-            $progress_ratio_arr[$customer->customer_name][ProgressRatioEnum::SHIPMENT_ORDER_QUANTITY_PROGRESS_RATIO_NAME] = $this->getProgressRatio($progress_arr[$customer->customer_name]['item'][ProgressRatioEnum::SHIPMENT_ORDER_QUANTITY]['value'], $progress_arr[$customer->customer_name]['item'][ProgressRatioEnum::INSPECTION_INCOMPLETE_SHIPMENT_ORDER_QUANTITY]['value']);
-            $progress_ratio_arr[$customer->customer_name][ProgressRatioEnum::SHIPMENT_QUANTITY_PCS_PROGRESS_RATIO_NAME] = $this->getProgressRatio($progress_arr[$customer->customer_name]['item'][ProgressRatioEnum::SHIPMENT_QUANTITY_PCS]['value'], $progress_arr[$customer->customer_name]['item'][ProgressRatioEnum::INSPECTION_INCOMPLETE_SHIPMENT_QUANTITY_PCS]['value']);
-            $progress_ratio_arr[$customer->customer_name][ProgressRatioEnum::SHIPMENT_QUANTITY_BL_PROGRESS_RATIO_NAME] = $this->getProgressRatio($progress_arr[$customer->customer_name]['item'][ProgressRatioEnum::SHIPMENT_QUANTITY_BL]['value'], $progress_arr[$customer->customer_name]['item'][ProgressRatioEnum::INSPECTION_INCOMPLETE_SHIPMENT_QUANTITY_BL]['value']);
-            $progress_ratio_arr[$customer->customer_name][ProgressRatioEnum::SHIPMENT_QUANTITY_CS_PROGRESS_RATIO_NAME] = $this->getProgressRatio($progress_arr[$customer->customer_name]['item'][ProgressRatioEnum::SHIPMENT_QUANTITY_CS]['value'], $progress_arr[$customer->customer_name]['item'][ProgressRatioEnum::INSPECTION_INCOMPLETE_SHIPMENT_QUANTITY_CS]['value']);
         }
         return compact('progress_arr', 'progress_ratio_arr');
     }
@@ -72,8 +77,8 @@ class ProgressService
         $bases = Base::getAll()->get();
         // 拠点の分だけループ
         foreach($bases as $base){
-            // 荷主が存在する拠点のみ処理を継続
-            if($base->customers()->count() > 0){
+            // 荷主が存在するかつ進捗が存在する拠点のみ処理を継続
+            if($base->customers()->count() > 0 && Customer::getProgressByBase($base->base_id)){
                 // 拠点に紐付いている荷主分類数を取得
                 $cutomer_category_count = Customer::getCustomerCategoryCountByBase($base->base_id);
                 // 配列のキーに使用する情報をセット
@@ -116,8 +121,8 @@ class ProgressService
         $tags = Tag::getAll()->get();
         // タグの分だけループ
         foreach($tags as $tag){
-            // 荷主が存在するタグのみ処理を継続
-            if($tag->customers()->count() > 0){
+            // 荷主が存在するかつ進捗が存在するタグのみ処理を継続
+            if($tag->customers()->count() > 0 && Tag::getProgressByTag($tag->tag_id)){
                 // タグに紐付いている荷主分類数を取得
                 $cutomer_category_count = CustomerTag::getCustomerCategoryCountByTag($tag->tag_id);
                 // 配列のキーに使用する情報をセット

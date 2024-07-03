@@ -61,4 +61,11 @@ class Customer extends Model
                     ->distinct()
                     ->count('customer_category');
     }
+    // 拠点としての進捗数を取得
+    public static function getProgressByBase($base_id)
+    {
+        return self::where('base_id', $base_id)
+                    ->join('progresses', 'progresses.customer_code', 'customers.customer_code')
+                    ->count();
+    }
 }
