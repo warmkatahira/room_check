@@ -20,6 +20,8 @@ use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Role\RoleController;
 // +-+-+-+-+-+-+-+- バージョン管理 +-+-+-+-+-+-+-+-
 use App\Http\Controllers\VersionMgt\VersionMgtController;
+// +-+-+-+-+-+-+-+- 進捗履歴 +-+-+-+-+-+-+-+-
+use App\Http\Controllers\ProgressHistory\ProgressHistoryController;
 
 // ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆ Welcome ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆
     // -+-+-+-+-+-+-+-+-+-+-+-+ Welcome -+-+-+-+-+-+-+-+-+-+-+-+
@@ -34,6 +36,10 @@ Route::middleware(['auth'])->group(function () {
         Route::get('customer', 'customer')->name('customer');
         Route::get('base', 'base')->name('base');
         Route::get('tag', 'tag')->name('tag');
+    });
+    // ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆ 進捗履歴 ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆
+    Route::controller(ProgressHistoryController::class)->prefix('progress_history')->name('progress_history.')->group(function(){
+        Route::get('', 'index')->name('index');
     });
     // ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆ マスタ ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆
     Route::middleware(['MasterOperationIsAvailable'])->group(function () {

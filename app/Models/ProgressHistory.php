@@ -24,4 +24,9 @@ class ProgressHistory extends Model
     {
         return $this->belongsTo(Item::class, 'item_code', 'item_code');
     }
+    // customersとのリレーション
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class, 'customer_code', 'customer_code');
+    }
 }

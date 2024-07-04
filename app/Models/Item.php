@@ -18,6 +18,7 @@ class Item extends Model
         'item_name',
         'item_unit',
         'item_sort_order',
+        'is_progress_history_add',
     ];
     // 全て取得
     public static function getAll()

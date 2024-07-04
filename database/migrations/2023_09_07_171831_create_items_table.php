@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('item_name', 20);
             $table->string('item_unit', 10);
             $table->unsignedInteger('item_sort_order');
+            $table->boolean('is_progress_history_add')->default(0);
             $table->timestamps();
         });
     }

@@ -4,6 +4,7 @@
     <a href="{{ route('progress.customer') }}" class="logo">ミエル</a>
     <ul class="links flex">
         <li class="dropdown"><a href="{{ route('progress.customer') }}" class="trigger-drop">進捗</a></li>
+        <li class="dropdown"><a href="{{ route('progress_history.index') }}" class="trigger-drop">進捗履歴</a></li>
         @can('masterOperationIsAvailable')
             <li class="dropdown"><a class="trigger-drop cursor-pointer">マスタ</a>
                 <ul class="drop">

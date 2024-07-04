@@ -20,7 +20,10 @@ class ShippingConfirmedPostController extends Controller
             'shipping_confirmed_at' => CarbonImmutable::now(),
         ]);
         // 進捗履歴テーブルに追加する情報を取得
-        $progresses = Progress::where('customer_code', $request->customer_code)->get();
+        $progresses = Progress::where('customer_code', $request->customer_code)
+                        ->join('items', 'items.item_code', 'progresses.item_code')
+                        ->where('is_progress_history_add', 1)
+                        ->get();
         // 進捗の分だけループ処理
         foreach($progresses as $progress){
             // レコードを追加
