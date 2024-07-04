@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('customer_code', 20);
             $table->string('pc_name', 50);
             $table->string('system_name', 100);
-            $table->string('system_version', 5);
+            $table->string('system_version', 20);
             $table->timestamps();
             // 外部キー制約
             $table->foreign('customer_code')->references('customer_code')->on('customers')->cascadeOnUpdate()->cascadeOnDelete();
