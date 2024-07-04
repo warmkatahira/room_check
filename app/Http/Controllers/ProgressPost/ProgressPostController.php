@@ -38,8 +38,8 @@ class ProgressPostController extends Controller
         Customer::where('customer_code', $request->customer_code)->update([
             'updated_at' => CarbonImmutable::now(),
         ]);
-        // PC名を送信されてきている場合のみ実施
-        if(!is_null($request->pc_name)){
+        // PC名が送信されてきている場合のみ実施
+        if($request->pc_name != ''){
             // system_nameからシステム名とバージョンを分割
             $system_name_explode = explode('_v', $request->system_name);
             // 荷主コードとPC名の組合せをテーブルから取得
