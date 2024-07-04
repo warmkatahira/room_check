@@ -1,4 +1,4 @@
-@vite(['resources/js/version_mgt/version_mgt.js'])
+@vite(['resources/js/progress_history/progress_history.js'])
 
 <x-app-layout>
     <x-page-header content="進捗履歴" />
@@ -13,8 +13,9 @@
                     <th class="font-thin py-3 px-2">日付</th>
                     <th class="font-thin py-3 px-2">拠点名</th>
                     <th class="font-thin py-3 px-2">荷主名</th>
-                    <th class="font-thin py-3 px-2">項目</th>
-                    <th class="font-thin py-3 px-2">値</th>
+                    <th class="font-thin py-3 px-2">項目名</th>
+                    <th class="font-thin py-3 px-2">数量</th>
+                    <th class="font-thin py-3 px-2">単位</th>
                 </tr>
             </thead>
             <tbody class="bg-white">
@@ -25,6 +26,7 @@
                         <td class="py-1 px-2 border">{{ $progress_history->customer->customer_name }}</td>
                         <td class="py-1 px-2 border">{{ $progress_history->item->item_name }}</td>
                         <td class="py-1 px-2 border text-right">{{ number_format($progress_history->progress_value) }}</td>
+                        <td class="py-1 px-2 border">{{ $progress_history->item->item_unit }}</td>
                     </tr>
                 @endforeach
             </tbody>

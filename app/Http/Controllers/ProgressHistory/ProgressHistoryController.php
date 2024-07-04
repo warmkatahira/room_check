@@ -25,7 +25,7 @@ class ProgressHistoryController extends Controller
         // 荷主を取得
         $customers = Customer::orderBy('base_id', 'asc')->get();
         // 項目を取得
-        $items = Item::getAll()->get();
+        $items = Item::getAll()->where('is_progress_history_add', 1)->get();
         return view('progress_history.index')->with([
             'progress_histories' => $progress_histories,
             'customers' => $customers,

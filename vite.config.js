@@ -17,6 +17,7 @@ export default defineConfig({
                 'resources/scss/theme.scss',
                 'resources/scss/navigation.scss',
                 'resources/scss/navigation_hamburger.scss',
+                'resources/js/search_date.js',
                 // 進捗
                 'resources/js/progress/category_select.js',
                 // 荷主マスタ
@@ -33,6 +34,8 @@ export default defineConfig({
                 'resources/js/role/role.js',
                 // バージョン管理
                 'resources/js/version_mgt/version_mgt.js',
+                // 進捗履歴
+                'resources/js/progress_history/progress_history.js',
             ],
         ),
     ],

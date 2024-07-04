@@ -1,6 +1,6 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-d774d83d.css",
+    "file": "assets/app-6d8dd20f.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -29,10 +29,20 @@
     "isEntry": true,
     "src": "resources/js/progress/category_select.js"
   },
+  "resources/js/progress_history/progress_history.js": {
+    "file": "assets/progress_history-ac2820f2.js",
+    "isEntry": true,
+    "src": "resources/js/progress_history/progress_history.js"
+  },
   "resources/js/role/role.js": {
     "file": "assets/role-009f64bb.js",
     "isEntry": true,
     "src": "resources/js/role/role.js"
+  },
+  "resources/js/search_date.js": {
+    "file": "assets/search_date-8ec2ed9b.js",
+    "isEntry": true,
+    "src": "resources/js/search_date.js"
   },
   "resources/js/tag/tag.js": {
     "file": "assets/tag-b2e18c5f.js",

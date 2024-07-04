@@ -16,6 +16,9 @@
         <!-- Styles -->
         @vite(['resources/css/app.css', 'resources/scss/theme.scss'])
 
+        <!-- Script -->
+        @vite(['resources/js/search_date.js'])
+
         <!-- LINE AWESOME -->
         <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
 
