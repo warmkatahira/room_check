@@ -31,10 +31,8 @@ class ProgressHistoryDownloadService
                         CarbonImmutable::parse($progress_history->date)->format('Y-m-d'),
                         $progress_history->customer->base->base_name,
                         $progress_history->customer->customer_name,
-                        $progress_history->item->item_name,
+                        $progress_history->item->item_name.'('.$progress_history->item->item_unit.')',
                         $progress_history->progress_value,
-                        $progress_history->item->item_unit,
-                        
                     ];
                     fputcsv($handle, $row);
                 };

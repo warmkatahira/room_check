@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('progress_histories', function (Blueprint $table) {
-            $table->bigIncrements('progress_id');
+            $table->bigIncrements('progress_history_id');
             $table->date('date');
             $table->string('customer_code', 20);
             $table->string('item_code', 50);

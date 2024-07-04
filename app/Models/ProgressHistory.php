@@ -26,9 +26,8 @@ class ProgressHistory extends Model
             '日付',
             '拠点名',
             '荷主名',
-            '項目名',
+            '項目名(単位)',
             '数量',
-            '単位',
         ];
     }
     // itemテーブルとのリレーション
