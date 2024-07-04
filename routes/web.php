@@ -40,6 +40,7 @@ Route::middleware(['auth'])->group(function () {
     // ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆ 進捗履歴 ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆
     Route::controller(ProgressHistoryController::class)->prefix('progress_history')->name('progress_history.')->group(function(){
         Route::get('', 'index')->name('index');
+        Route::get('download', 'download')->name('download');
     });
     // ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆ マスタ ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆
     Route::middleware(['MasterOperationIsAvailable'])->group(function () {

@@ -9,6 +9,9 @@ use App\Models\Customer;
 use App\Models\Item;
 // サービス
 use App\Services\ProgressHistory\ProgressHistoryService;
+use App\Services\ProgressHistory\ProgressHistoryDownloadService;
+// その他
+use Carbon\CarbonImmutable;
 
 class ProgressHistoryController extends Controller
 {
@@ -22,6 +25,8 @@ class ProgressHistoryController extends Controller
         $ProgressHistoryService->setSearchCondition($request);
         // 検索結果を取得
         $progress_histories = $ProgressHistoryService->getSearchResult();
+        // ページネーションと並び替えを実施
+        $progress_histories = $progress_histories->orderBy('date', 'asc')->orderBy('customer_code', 'asc')->orderBy('item_code', 'asc')->paginate(50);
         // 荷主を取得
         $customers = Customer::orderBy('base_id', 'asc')->get();
         // 項目を取得
@@ -31,5 +36,20 @@ class ProgressHistoryController extends Controller
             'customers' => $customers,
             'items' => $items,
         ]);
+    }
+
+    public function download()
+    {
+        // インスタンス化
+        $ProgressHistoryService = new ProgressHistoryService;
+        $ProgressHistoryDownloadService = new ProgressHistoryDownloadService;
+        // 検索結果を取得
+        $progress_histories = $ProgressHistoryService->getSearchResult();
+        // ダウンロードするデータを取得
+        $response = $ProgressHistoryDownloadService->getDownloadData($progress_histories);
+        // ダウンロード処理
+        $response->headers->set('Content-Type', 'text/csv');
+        $response->headers->set('Content-Disposition', 'attachment; filename=【ミエル】進捗履歴_' . CarbonImmutable::now()->isoFormat('Y年MM月DD日HH時mm分ss秒') . '.csv');
+        return $response;
     }
 }

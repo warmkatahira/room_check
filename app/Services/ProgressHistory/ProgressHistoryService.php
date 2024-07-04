@@ -50,14 +50,13 @@ class ProgressHistoryService
         $progress_histories = ProgressHistory::whereDate('date', '>=', session('search_date_from'))
                                 ->whereDate('date', '<=', session('search_date_to'));
         // 荷主コードの条件がある場合
-        if (session('search_customer_code') != null) {
+        if (session('search_customer_code') != 0) {
             $progress_histories = $progress_histories->where('customer_code', session('search_customer_code'));
         }
-        // 項目の条件がある場合
+        // 項目名の条件がある場合
         if (session('search_item_code') != 0) {
             $progress_histories = $progress_histories->where('item_code', session('search_item_code'));
         }
-        // ページネーションと並び替えを実施
-        return $progress_histories->orderBy('date', 'asc')->orderBy('customer_code', 'asc')->orderBy('item_code', 'asc')->paginate(50);
+        return $progress_histories;
     }
 }

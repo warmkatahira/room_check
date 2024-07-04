@@ -19,6 +19,18 @@ class ProgressHistory extends Model
         'item_code',
         'progress_value',
     ];
+    // ダウンロード時のヘッダーを定義
+    public static function downloadHeader()
+    {
+        return [
+            '日付',
+            '拠点名',
+            '荷主名',
+            '項目名',
+            '数量',
+            '単位',
+        ];
+    }
     // itemテーブルとのリレーション
     public function item()
     {
