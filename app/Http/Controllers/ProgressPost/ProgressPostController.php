@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 // モデル
 use App\Models\Progress;
 use App\Models\Customer;
+use App\Models\SystemVersionManagement;
 // その他
 use Carbon\CarbonImmutable;
 
@@ -17,14 +18,14 @@ class ProgressPostController extends Controller
         // 送信されてきたパラメータの進捗をテーブルから取得
         $progress = Progress::where('customer_code', $request->customer_code)
                         ->where('item_code', $request->item_code);
-        // 既に存在する進捗の場合
+        // 存在する場合
         if($progress->count() > 0){
             // 値を更新
             $progress->update([
                 'progress_value' => $request->progress_value,
             ]);
         }
-        // 存在しない進捗の場合
+        // 存在しない場合
         if($progress->count() == 0){
             // 進捗を追加
             Progress::create([
@@ -37,6 +38,30 @@ class ProgressPostController extends Controller
         Customer::where('customer_code', $request->customer_code)->update([
             'updated_at' => CarbonImmutable::now(),
         ]);
+        // PC名を送信されてきている場合のみ実施
+        if(!is_null($request->pc_name)){
+            // 荷主コードとPC名の組合せをテーブルから取得
+            $system_version_management = SystemVersionManagement::where('customer_code', $request->customer_code)
+                                            ->where('pc_name', $request->pc_name);
+            // 存在する場合
+            if($system_version_management->count() > 0){
+                // 値を更新
+                $progress->update([
+                    'system_name' => $request->system_name,
+                    'system_version' => $request->system_version,
+                ]);
+            }
+            // 存在しない場合
+            if($system_version_management->count() == 0){
+                // 進捗を追加
+                SystemVersionManagement::create([
+                    'customer_code' => $request->customer_code,
+                    'pc_name' => $request->pc_name,
+                    'system_name' => $request->system_name,
+                    'system_version' => $request->system_version,
+                ]);
+            }
+        }
         return response()->json([
             "message" => 'OK',
         ], 201);
