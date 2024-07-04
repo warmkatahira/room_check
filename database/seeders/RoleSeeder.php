@@ -19,6 +19,10 @@ class RoleSeeder extends Seeder
             'management_operation_is_available' => 1,
         ]);
         Role::create([
+            'role_name' => '田村',
+            'master_operation_is_available' => 1,
+        ]);
+        Role::create([
             'role_name' => '一般',
         ]);
     }

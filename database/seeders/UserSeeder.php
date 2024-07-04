@@ -21,6 +21,13 @@ class UserSeeder extends Seeder
             'status' => 1,
         ]);
         User::create([
+            'user_id' => 'tamura',
+            'user_name' => '田村 拓海',
+            'password' => bcrypt('tamura135'),
+            'role_id' => 1,
+            'status' => 1,
+        ]);
+        User::create([
             'user_id' => 'user',
             'user_name' => '共通ユーザー',
             'password' => bcrypt('user12345'),
