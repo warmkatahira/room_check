@@ -8,7 +8,7 @@
             <select id="search_customer_code" name="search_customer_code" class="text-sm">
                 <option value="all" @if('all' == session('search_customer_code')) selected @endif>全て</option>
                 @foreach($customers as $customer)
-                    <option value="{{ $customer->customer_code }}" @if($customer->customer_code == session('search_customer_code')) selected @endif>{{ $customer->customer_name }}</option>
+                    <option value="{{ $customer->customer_code }}" @if($customer->customer_code == session('search_customer_code')) selected @endif>{{ $customer->customer_name.'<'.$customer->base->base_name.'>' }}</option>
                 @endforeach
             </select>
         </div>

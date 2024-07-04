@@ -27,7 +27,7 @@ class VersionMgtController extends Controller
         // 並び替えて取得
         $system_version_managements = $system_version_managements->orderBy('updated_at', 'desc')->get();
         // 荷主を取得
-        $customers = Customer::getAll()->get();
+        $customers = Customer::orderBy('base_id', 'asc')->get();
         return view('version_mgt.index')->with([
             'system_version_managements' => $system_version_managements,
             'customers' => $customers,
