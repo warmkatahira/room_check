@@ -16,9 +16,8 @@
                     <th class="font-thin py-3 px-2">日付</th>
                     <th class="font-thin py-3 px-2">拠点名</th>
                     <th class="font-thin py-3 px-2">荷主名</th>
-                    <th class="font-thin py-3 px-2">項目名</th>
+                    <th class="font-thin py-3 px-2">項目名(単位)</th>
                     <th class="font-thin py-3 px-2">数量</th>
-                    <th class="font-thin py-3 px-2">単位</th>
                 </tr>
             </thead>
             <tbody class="bg-white">
@@ -27,9 +26,8 @@
                         <td class="py-1 px-2 border">{{ CarbonImmutable::parse($progress_history->date)->isoFormat('Y年MM月DD日') }}</td>
                         <td class="py-1 px-2 border">{{ $progress_history->customer->base->base_name }}</td>
                         <td class="py-1 px-2 border">{{ $progress_history->customer->customer_name }}</td>
-                        <td class="py-1 px-2 border">{{ $progress_history->item->item_name }}</td>
+                        <td class="py-1 px-2 border">{{ $progress_history->item->item_name.'('.$progress_history->item->item_unit.')' }}</td>
                         <td class="py-1 px-2 border text-right">{{ number_format($progress_history->progress_value) }}</td>
-                        <td class="py-1 px-2 border">{{ $progress_history->item->item_unit }}</td>
                     </tr>
                 @endforeach
             </tbody>
