@@ -15,7 +15,7 @@ final class PCNameEnum extends Enum
     const TAMURA    = 'WARM-TAMURA2';
 
     // 進捗の更新が許可されているPC名であるか確認
-    public function checkExclusionPCName($pc_name)
+    public static function checkExclusionPCName($pc_name)
     {
         if($pc_name !== self::KATAHIRA && $pc_name !== self::TAMURA){
             return true;
