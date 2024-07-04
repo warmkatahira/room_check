@@ -50,7 +50,7 @@ class ProgressPostController extends Controller
             // 存在する場合
             if($system_version_management->count() > 0){
                 // 値を更新
-                $progress->update([
+                $system_version_management->update([
                     'system_name' => $system_name_explode[0],
                     'system_version' => $system_name_explode[1],
                 ]);
