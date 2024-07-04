@@ -40,6 +40,8 @@ class ProgressPostController extends Controller
         ]);
         // PC名を送信されてきている場合のみ実施
         if(!is_null($request->pc_name)){
+            // system_nameからシステム名とバージョンを分割
+            $system_name_explode = explode('_v', $request->system_name);
             // 荷主コードとPC名の組合せをテーブルから取得
             $system_version_management = SystemVersionManagement::where('customer_code', $request->customer_code)
                                             ->where('pc_name', $request->pc_name);
@@ -47,8 +49,8 @@ class ProgressPostController extends Controller
             if($system_version_management->count() > 0){
                 // 値を更新
                 $progress->update([
-                    'system_name' => $request->system_name,
-                    'system_version' => $request->system_version,
+                    'system_name' => $system_name_explode[0],
+                    'system_version' => $system_name_explode[1],
                 ]);
             }
             // 存在しない場合
@@ -57,8 +59,8 @@ class ProgressPostController extends Controller
                 SystemVersionManagement::create([
                     'customer_code' => $request->customer_code,
                     'pc_name' => $request->pc_name,
-                    'system_name' => $request->system_name,
-                    'system_version' => $request->system_version,
+                    'system_name' => $system_name_explode[0],
+                    'system_version' => $system_name_explode[1],
                 ]);
             }
         }
