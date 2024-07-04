@@ -18,6 +18,8 @@ use App\Http\Controllers\CustomerTag\CustomerTagController;
 use App\Http\Controllers\User\UserController;
 // +-+-+-+-+-+-+-+- 権限 +-+-+-+-+-+-+-+-
 use App\Http\Controllers\Role\RoleController;
+// +-+-+-+-+-+-+-+- バージョン管理 +-+-+-+-+-+-+-+-
+use App\Http\Controllers\VersionMgt\VersionMgtController;
 
 // ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆ Welcome ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆
     // -+-+-+-+-+-+-+-+-+-+-+-+ Welcome -+-+-+-+-+-+-+-+-+-+-+-+
@@ -67,6 +69,13 @@ Route::middleware(['auth'])->group(function () {
             Route::get('', 'index')->name('index');
             Route::get('update', 'update_index')->name('update_index');
             Route::post('update', 'update')->name('update');
+        });
+    });
+    // ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆ バージョン管理 ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆
+    Route::middleware(['MasterOperationIsAvailable'])->group(function () {
+        // ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆ ユーザー ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆
+        Route::controller(VersionMgtController::class)->prefix('version_mgt')->name('version_mgt.')->group(function(){
+            Route::get('', 'index')->name('index');
         });
     });
     // ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆ 管理 ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆

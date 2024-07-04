@@ -31,6 +31,8 @@ export default defineConfig({
                 'resources/js/user/user.js',
                 // 権限管理
                 'resources/js/role/role.js',
+                // バージョン管理
+                'resources/js/version_mgt/version_mgt.js',
             ],
         ),
     ],

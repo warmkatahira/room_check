@@ -44,6 +44,11 @@
     "isEntry": true,
     "src": "resources/js/user/user.js"
   },
+  "resources/js/version_mgt/version_mgt.js": {
+    "file": "assets/version_mgt-cede2370.js",
+    "isEntry": true,
+    "src": "resources/js/version_mgt/version_mgt.js"
+  },
   "resources/js/window_update.js": {
     "file": "assets/window_update-c168924d.js",
     "isEntry": true,

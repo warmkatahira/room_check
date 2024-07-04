@@ -14,6 +14,9 @@
                 </ul>
             </li>
         @endcan
+        @can('masterOperationIsAvailable')
+            <li class="dropdown"><a href="{{ route('version_mgt.index') }}" class="trigger-drop cursor-pointer">バージョン管理</a></li>
+        @endcan
         @can('managementOperationIsAvailable')
             <li class="dropdown"><a class="trigger-drop cursor-pointer">管理</a>
                 <ul class="drop">

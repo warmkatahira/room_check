@@ -17,4 +17,14 @@ class SystemVersionManagement extends Model
         'system_name',
         'system_version',
     ];
+    // 全て取得
+    public static function getAll()
+    {
+        return self::orderBy('updated_at', 'desc');
+    }
+    // customersとのリレーション
+    public function customer()
+    {
+        return $this->hasOne(Customer::class, 'customer_code', 'customer_code');
+    }
 }
