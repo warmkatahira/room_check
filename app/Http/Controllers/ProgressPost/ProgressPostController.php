@@ -42,6 +42,8 @@ class ProgressPostController extends Controller
         if($request->pc_name != ''){
             // system_nameからシステム名とバージョンを分割
             $system_name_explode = explode('_v', $request->system_name);
+            // バージョンから不要な文字を削除
+            $system_name_explode[1] = str_replace(".accdb", "", $system_name_explode[1]);
             // 荷主コードとPC名の組合せをテーブルから取得
             $system_version_management = SystemVersionManagement::where('customer_code', $request->customer_code)
                                             ->where('pc_name', $request->pc_name);
