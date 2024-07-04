@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class SystemVersionManagement extends Model
 {
     use HasFactory;
+    // テーブル名を定義
+    protected $table = 'system_version_managements';
     // 主キーカラムを変更
     protected $primaryKey = 'system_version_management_id';
     // 操作可能なカラムを定義
