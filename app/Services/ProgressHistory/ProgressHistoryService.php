@@ -57,6 +57,6 @@ class ProgressHistoryService
         if (session('search_item_code') != 0) {
             $progress_histories = $progress_histories->where('item_code', session('search_item_code'));
         }
-        return $progress_histories;
+        return $progress_histories->orderBy('date', 'asc')->orderBy('customer_code', 'asc')->orderBy('item_code', 'asc');
     }
 }

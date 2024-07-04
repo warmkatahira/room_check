@@ -25,8 +25,8 @@ class ProgressHistoryController extends Controller
         $ProgressHistoryService->setSearchCondition($request);
         // 検索結果を取得
         $progress_histories = $ProgressHistoryService->getSearchResult();
-        // ページネーションと並び替えを実施
-        $progress_histories = $progress_histories->orderBy('date', 'asc')->orderBy('customer_code', 'asc')->orderBy('item_code', 'asc')->paginate(50);
+        // ページネーションを実施
+        $progress_histories = $progress_histories->paginate(50);
         // 荷主を取得
         $customers = Customer::orderBy('base_id', 'asc')->get();
         // 項目を取得
