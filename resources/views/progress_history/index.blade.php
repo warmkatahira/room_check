@@ -5,7 +5,7 @@
     <!-- 検索条件 -->
     <x-progress-history.search :customers="$customers" :items="$items" />
     <div class="mt-5">
-        <a href="{{ route('progress_history.download') }}" class="text-sm text-center px-10 py-3 bg-theme-sub">ダウンロード</a>
+        <a href="{{ route('progress_history.download') }}" class="text-sm text-center px-10 py-3 bg-theme-sub"><i class="las la-download la-lg mr-1"></i>ダウンロード</a>
     </div>
     <!-- ページネーション -->
     <x-pagination :pages="$progress_histories" />
