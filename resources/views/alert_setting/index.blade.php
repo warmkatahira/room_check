@@ -11,9 +11,9 @@
                     <th class="font-thin py-3 px-2">拠点名</th>
                     <th class="font-thin py-3 px-2">荷主名</th>
                     <th class="font-thin py-3 px-2">項目名(単位)</th>
-                    <th class="font-thin py-3 px-2">アラート発報時刻</th>
-                    <th class="font-thin py-3 px-2">アラート発報値</th>
-                    <th class="font-thin py-3 px-2">アラートメッセージ</th>
+                    <th class="font-thin py-3 px-2">発報時刻</th>
+                    <th class="font-thin py-3 px-2">発報値</th>
+                    <th class="font-thin py-3 px-2">メッセージ</th>
                 </tr>
             </thead>
             <tbody class="bg-white">
@@ -26,7 +26,7 @@
                         <td class="py-1 px-2 border">{{ $alert_setting->customer->customer_name }}</td>
                         <td class="py-1 px-2 border">{{ $alert_setting->item->item_name.'('.$alert_setting->item->item_unit.')' }}</td>
                         <td class="py-1 px-2 border">{{ CarbonImmutable::parse($alert_setting->alert_time)->format('H:i') }}</td>
-                        <td class="py-1 px-2 border">{{ $alert_setting->alert_value }}</td>
+                        <td class="py-1 px-2 border text-right">{{ number_format($alert_setting->alert_value) }}</td>
                         <td class="py-1 px-2 border">{{ $alert_setting->alert_message }}</td>
                     </tr>
                 @endforeach
