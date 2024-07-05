@@ -1,7 +1,7 @@
 @vite(['resources/js/alert_setting/alert_setting.js'])
 
 <x-app-layout>
-    <x-page-header content="項目マスタ詳細" />
+    <x-page-header content="アラート設定詳細" />
     <!-- バリデーションエラー表示 -->
     <x-validation-error-msg />
     <form method="POST" action="{{ route('alert_setting.update') }}" id="alert_setting_update_form" class="grid grid-cols-12 m-0">
