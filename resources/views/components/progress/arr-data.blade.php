@@ -13,7 +13,7 @@
                 $border = 'border-theme-main';
                 $icon_type = null;
                 if(isset($value['alert'])){
-                    $value['alert'] ? 'alert' : null;
+                    $icon_type = $value['alert'] ? 'alert' : null;
                 }
                 // 配列があって、値がTrueであれば色を変える
                 if(isset($value['shipping_confirmed_at_today']) && $value['shipping_confirmed_at_today']){
