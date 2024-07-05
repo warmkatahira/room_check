@@ -4,6 +4,11 @@
     "isEntry": true,
     "src": "resources/css/app.css"
   },
+  "resources/js/alert_setting/alert_setting.js": {
+    "file": "assets/alert_setting-c2949ecf.js",
+    "isEntry": true,
+    "src": "resources/js/alert_setting/alert_setting.js"
+  },
   "resources/js/app.js": {
     "file": "assets/app-6e0eadfb.js",
     "isEntry": true,
@@ -63,6 +68,11 @@
     "file": "assets/window_update-c168924d.js",
     "isEntry": true,
     "src": "resources/js/window_update.js"
+  },
+  "resources/scss/alert_message.scss": {
+    "file": "assets/alert_message-d9e618b5.css",
+    "isEntry": true,
+    "src": "resources/scss/alert_message.scss"
   },
   "resources/scss/navigation.scss": {
     "file": "assets/navigation-63e62e6e.css",

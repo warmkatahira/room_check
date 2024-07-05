@@ -11,7 +11,7 @@
                 $bg = 'bg-theme-main';
                 $bg_sub = 'bg-theme-sub';
                 $border = 'border-theme-main';
-                $shipping_confirmed = false;
+                $icon_type = $value['alert'] ? 'alert' : null;
                 // 配列があって、値がTrueであれば色を変える
                 if(isset($value['shipping_confirmed_at_today']) && $value['shipping_confirmed_at_today']){
                     // 荷主の更新時間よりも出荷確定日時の方が最新の場合(出荷確定後、動いていない)
@@ -19,7 +19,7 @@
                         $bg = 'bg-orange-500';
                         $bg_sub = 'bg-orange-200';
                         $border = 'border-orange-500';
-                        $shipping_confirmed = true;
+                        $icon_type = 'shipping_confirmed';
                     }
                     // 出荷確定日時よりも荷主の更新時間の方が最新の場合(出荷確定後、動いている)
                     if($value['last_updated'] > $value['shipping_confirmed_at']){
@@ -33,9 +33,21 @@
                 @if(isset($value['base_name']))
                     <div class="flex flex-row">
                         <p class="text-white text-xs mb-1">{{ $value['base_name'] }}</p>
-                        @if($shipping_confirmed)
+                        @if($icon_type == 'shipping_confirmed')
                             <lord-icon src="https://cdn.lordicon.com/ctlnzcle.json" trigger="loop" delay="1000" style="width:35px;height:35px" class="ml-auto"></lord-icon>
                         @endif
+                        @if($icon_type == 'alert')
+                            <lord-icon src="https://cdn.lordicon.com/jxzkkoed.json" trigger="loop" delay="1000" style="width:35px;height:35px" class="ml-auto"></lord-icon>
+                        @endif
+                    </div>
+                @endif
+                @if($icon_type == 'alert')
+                    <div class="alert_message_div">
+                        <ul>
+                            @foreach($value['alert_message'] as $alert_message)
+                                <li>{{ $alert_message }}</li>
+                            @endforeach
+                        </ul>
                     </div>
                 @endif
                 <p class="text-white text-center">{{ $key }}</p>

@@ -1,4 +1,5 @@
 @vite(['resources/js/window_update.js'])
+@vite(['resources/scss/alert_message.scss'])
 
 <x-app-layout>
     <!-- 出勤中人数 -->

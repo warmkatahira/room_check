@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 // サービス
 use App\Services\Progress\ProgressService;
+use App\Services\Progress\ProgressAlertService;
 
 class ProgressController extends Controller
 {
@@ -13,8 +14,11 @@ class ProgressController extends Controller
     {
         // インスタンス化
         $ProgressService = new ProgressService;
+        $ProgressAlertService = new ProgressAlertService;
         // 荷主毎で集計した進捗を取得
         $data = $ProgressService->getProgressByCustomer();
+        // アラート発報かどうかをチェック
+        $data = $ProgressAlertService->checkAlert($data);
         // 出勤中人数を拠点毎に整理
         $working_info = $ProgressService->getWorkingInfo();
         return view('progress.customer')->with([

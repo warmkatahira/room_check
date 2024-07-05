@@ -41,12 +41,15 @@ class ProgressService
                 }
                 // 今回の拠点IDのキーを配列にセットすると同時に、項目も一式セット
                 $progress_arr[$customer->customer_name] = [
+                    'customer_code' => $customer->customer_code,
                     'item' => $item_arr,
                     'base_name' => $customer->base->base_name,
                     'last_updated' => $customer->updated_at,
                     'tags' => $customer->customer_tags()->get(),
                     'shipping_confirmed_at' => $customer->shipping_confirmed_at,
                     'shipping_confirmed_at_today' => $shipping_confirmed_at_today,
+                    'alert' => false,
+                    'alert_message' => null,
                 ];
                 // 荷主に紐付いている進捗を取得
                 $progresses = $customer->progresses()->get();

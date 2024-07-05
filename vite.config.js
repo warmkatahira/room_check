@@ -20,6 +20,7 @@ export default defineConfig({
                 'resources/js/search_date.js',
                 // 進捗
                 'resources/js/progress/category_select.js',
+                'resources/scss/alert_message.scss',
                 // 荷主マスタ
                 'resources/js/customer/customer.js',
                 // 項目マスタ
@@ -36,6 +37,8 @@ export default defineConfig({
                 'resources/js/version_mgt/version_mgt.js',
                 // 進捗履歴
                 'resources/js/progress_history/progress_history.js',
+                // アラート設定
+                'resources/js/alert_setting/alert_setting.js',
             ],
         ),
     ],

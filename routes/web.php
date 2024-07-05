@@ -22,6 +22,8 @@ use App\Http\Controllers\Role\RoleController;
 use App\Http\Controllers\VersionMgt\VersionMgtController;
 // +-+-+-+-+-+-+-+- 進捗履歴 +-+-+-+-+-+-+-+-
 use App\Http\Controllers\ProgressHistory\ProgressHistoryController;
+// +-+-+-+-+-+-+-+- アラート設定 +-+-+-+-+-+-+-+-
+use App\Http\Controllers\AlertSetting\AlertSettingController;
 
 // ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆ Welcome ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆
     // -+-+-+-+-+-+-+-+-+-+-+-+ Welcome -+-+-+-+-+-+-+-+-+-+-+-+
@@ -41,6 +43,15 @@ Route::middleware(['auth'])->group(function () {
     Route::controller(ProgressHistoryController::class)->prefix('progress_history')->name('progress_history.')->group(function(){
         Route::get('', 'index')->name('index');
         Route::get('download', 'download')->name('download');
+    });
+    // ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆ アラート設定 ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆
+    Route::controller(AlertSettingController::class)->prefix('alert_setting')->name('alert_setting.')->group(function(){
+        Route::get('', 'index')->name('index');
+        Route::get('create', 'create_index')->name('create_index');
+        Route::post('create', 'create')->name('create');
+        Route::get('update', 'update_index')->name('update_index');
+        Route::post('update', 'update')->name('update');
+        Route::post('delete', 'delete')->name('delete');
     });
     // ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆ マスタ ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆
     Route::middleware(['MasterOperationIsAvailable'])->group(function () {
