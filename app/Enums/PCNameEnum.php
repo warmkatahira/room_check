@@ -11,8 +11,8 @@ use BenSampo\Enum\Enum;
  */
 final class PCNameEnum extends Enum
 {
-    const KATAHIRA  = 'WARM-KATAHIRA2';
-    const TAMURA    = 'WARM-TAMURA2';
+    const KATAHIRA  = 'WARM-KATAHIRA';
+    const TAMURA    = 'WARM-TAMURA';
 
     // 進捗の更新が許可されているPC名であるか確認
     public static function checkExclusionPCName($pc_name)
