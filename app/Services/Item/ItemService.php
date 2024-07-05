@@ -14,6 +14,7 @@ class ItemService
             'item_name' => $request->item_name,
             'item_unit' => $request->item_unit,
             'item_sort_order' => $request->item_sort_order,
+            'is_progress_history_add' => $request->is_progress_history_add,
         ]);
         return;
     }
@@ -24,6 +25,7 @@ class ItemService
             'item_name' => $request->item_name,
             'item_unit' => $request->item_unit,
             'item_sort_order' => $request->item_sort_order,
+            'is_progress_history_add' => $request->is_progress_history_add,
         ]);
         return;
     }

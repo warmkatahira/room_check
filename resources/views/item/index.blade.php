@@ -11,6 +11,7 @@
                     <th class="font-thin py-3 px-2">項目名</th>
                     <th class="font-thin py-3 px-2">項目単位</th>
                     <th class="font-thin py-3 px-2">項目並び順</th>
+                    <th class="font-thin py-3 px-2">進捗履歴追加</th>
                 </tr>
             </thead>
             <tbody class="bg-white">
@@ -22,6 +23,7 @@
                         <td class="py-1 px-2 border">{{ $item->item_name }}</td>
                         <td class="py-1 px-2 border">{{ $item->item_unit }}</td>
                         <td class="py-1 px-2 border text-right">{{ $item->item_sort_order }}</td>
+                        <td class="py-1 px-2 border text-center">@if($item->is_progress_history_add == 1) 有効 @endif</td>
                     </tr>
                 @endforeach
             </tbody>

@@ -26,6 +26,7 @@ class ItemCreateRequest extends FormRequest
             'item_name' => 'required|max:20',
             'item_unit' => 'required|max:10',
             'item_sort_order' => 'required|integer|min:1',
+            'is_progress_history_add' => 'required|in:0,1',
         ];
     }
 
@@ -37,6 +38,7 @@ class ItemCreateRequest extends FormRequest
             'min' => ":attributeは:min以上で入力して下さい。",
             'unique' => ':attributeは既に使用されています。',
             'integer' => ':attributeは数値(整数)で入力して下さい。',
+            'in' => ':attributeが正しくありません。',
         ];
     }
 
@@ -47,6 +49,7 @@ class ItemCreateRequest extends FormRequest
             'item_name' => '項目名',
             'item_unit' => '項目単位',
             'item_sort_order' => '項目並び順',
+            'is_progress_history_add' => '進捗履歴追加',
         ];
     }
 }
