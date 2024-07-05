@@ -11,7 +11,10 @@
                 $bg = 'bg-theme-main';
                 $bg_sub = 'bg-theme-sub';
                 $border = 'border-theme-main';
-                $icon_type = $value['alert'] ? 'alert' : null;
+                $icon_type = null;
+                if(isset($value['alert'])){
+                    $value['alert'] ? 'alert' : null;
+                }
                 // 配列があって、値がTrueであれば色を変える
                 if(isset($value['shipping_confirmed_at_today']) && $value['shipping_confirmed_at_today']){
                     // 荷主の更新時間よりも出荷確定日時の方が最新の場合(出荷確定後、動いていない)
