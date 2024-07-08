@@ -11,7 +11,7 @@
                     <th class="font-thin py-3 px-2">荷主名</th>
                     <th class="font-thin py-3 px-2">PC名</th>
                     <th class="font-thin py-3 px-2">システム名</th>
-                    <th class="font-thin py-3 px-2">システムバージョン</th>
+                    <th class="font-thin py-3 px-2">バージョン</th>
                     <th class="font-thin py-3 px-2">更新日時</th>
                 </tr>
             </thead>
