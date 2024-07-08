@@ -23,7 +23,7 @@
                         <td class="py-1 px-2 border">{{ $system_version_management->pc_name }}</td>
                         <td class="py-1 px-2 border">{{ $system_version_management->system_name }}</td>
                         <td class="py-1 px-2 border text-right">{{ $system_version_management->system_version }}</td>
-                        <td class="py-1 px-2 border">{{ CarbonImmutable::parse($system_version_management->updated_at)->isoFormat('Y年MM月DD日 HH時mm分ss秒') }}</td>
+                        <td class="py-1 px-2 border">{{ CarbonImmutable::parse($system_version_management->updated_at)->isoFormat('Y年MM月DD日 HH時mm分ss秒').'('.CarbonImmutable::parse($system_version_management->updated_at)->diffForHumans().')' }}</td>
                     </tr>
                 @endforeach
             </tbody>

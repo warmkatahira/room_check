@@ -23,7 +23,7 @@
             <tbody class="bg-white">
                 @foreach($progress_histories as $progress_history)
                     <tr class="text-left hover:bg-theme-sub cursor-default">
-                        <td class="py-1 px-2 border">{{ CarbonImmutable::parse($progress_history->date)->isoFormat('Y年MM月DD日') }}</td>
+                        <td class="py-1 px-2 border">{{ CarbonImmutable::parse($progress_history->date)->isoFormat('Y年MM月DD日(ddd)') }}</td>
                         <td class="py-1 px-2 border">{{ $progress_history->customer->base->base_name }}</td>
                         <td class="py-1 px-2 border">{{ $progress_history->customer->customer_name }}</td>
                         <td class="py-1 px-2 border">{{ $progress_history->item->item_name.'('.$progress_history->item->item_unit.')' }}</td>
