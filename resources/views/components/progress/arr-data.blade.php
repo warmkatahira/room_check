@@ -3,7 +3,7 @@
         <div class="col-span-12 xl:col-span-3 flex flex-col">
             @if(isset($value['last_updated']))
                 <div class="py-1 px-3 text-right">
-                    <p class="text-xs"><i class="las la-clock la-lg mr-1"></i>{{ CarbonImmutable::parse($value['last_updated'])->isoFormat('YYYY年MM月DD日(ddd) HH:mm:ss') }}</p>
+                    <p class="text-xs"><i class="las la-clock la-lg mr-1"></i>{{ CarbonImmutable::parse($value['last_updated'])->isoFormat('YYYY年MM月DD日(ddd) HH:mm:ss').'('.CarbonImmutable::parse($value['last_updated'])->diffForHumans().')' }}</p>
                 </div>
             @endif
             @php
