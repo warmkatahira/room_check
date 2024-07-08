@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 // モデル
 use App\Models\AlertSetting;
-use App\Models\Customer;
+use App\Models\Base;
 use App\Models\Item;
 // サービス
 use App\Services\AlertSetting\AlertSettingService;
@@ -27,12 +27,12 @@ class AlertSettingController extends Controller
 
     public function create_index()
     {
-        // 荷主を全て取得
-        $customers = Customer::getAll()->get();
+        // 拠点を取得
+        $bases = Base::getAll()->with('customers')->get();
         // 項目を全て取得
         $items = Item::getAll()->get();
         return view('alert_setting.create')->with([
-            'customers' => $customers,
+            'bases' => $bases,
             'items' => $items,
         ]);
     }
@@ -53,13 +53,13 @@ class AlertSettingController extends Controller
     {
         // アラート設定を取得
         $alert_setting = AlertSetting::getSpecify($request->alert_setting_id)->first();
-        // 荷主を全て取得
-        $customers = Customer::getAll()->get();
+        // 拠点を取得
+        $bases = Base::getAll()->with('customers')->get();
         // 項目を全て取得
         $items = Item::getAll()->get();
         return view('alert_setting.update')->with([
             'alert_setting' => $alert_setting,
-            'customers' => $customers,
+            'bases' => $bases,
             'items' => $items,
         ]);
     }

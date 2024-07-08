@@ -7,7 +7,7 @@
     <form method="POST" action="{{ route('alert_setting.update') }}" id="alert_setting_update_form" class="grid grid-cols-12 m-0">
         @csrf
         <x-master.input type="text" name="alert_setting_name" label="設定名" :db="$alert_setting->alert_setting_name" />
-        <x-master.select name="customer_code" label="荷主名" :forValue="$customers" forText="customer_name" :db="$alert_setting->customer_code" />
+        <x-master.customer-select :bases="$bases" :db="$alert_setting->customer_code" />
         <x-alert-setting.item-select :items="$items" :db="$alert_setting->item_code" />
         <x-alert-setting.alert-time-input :db="$alert_setting->alert_time" />
         <x-master.input type="text" name="alert_value" label="発報値" :db="$alert_setting->alert_value" />
