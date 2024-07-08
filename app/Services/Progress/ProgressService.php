@@ -43,7 +43,7 @@ class ProgressService
                 $key = $customer->customer_code;
                 // 今回の拠点IDのキーを配列にセットすると同時に、項目も一式セット
                 $progress_arr[$key] = [
-                    'title' => $key,
+                    'title' => $customer->customer_name,
                     'customer_code' => $customer->customer_code,
                     'item' => $item_arr,
                     'base_name' => $customer->base->base_name,
