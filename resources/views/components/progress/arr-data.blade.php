@@ -53,7 +53,7 @@
                         </ul>
                     </div>
                 @endif
-                <p class="text-white text-center">{{ $key }}</p>
+                <p class="text-white text-center">{{ $value['title'] }}</p>
             </div>
             @if(isset($value['tags']) && $value['tags']->count() > 0)
                 <div class="{{ $bg }} px-1 py-1 grid grid-cols-12 gap-2">

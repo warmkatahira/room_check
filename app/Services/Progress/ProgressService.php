@@ -40,7 +40,8 @@ class ProgressService
                     $shipping_confirmed_at_today = true;
                 }
                 // 今回の拠点IDのキーを配列にセットすると同時に、項目も一式セット
-                $progress_arr[$customer->customer_name] = [
+                $progress_arr[$customer->customer_code] = [
+                    'title' => $customer->customer_name,
                     'customer_code' => $customer->customer_code,
                     'item' => $item_arr,
                     'base_name' => $customer->base->base_name,
@@ -88,6 +89,7 @@ class ProgressService
                 $key = $base->base_name.'('.$cutomer_category_count.'社)';
                 // 今回の拠点IDのキーを配列にセットすると同時に、項目も一式セット
                 $progress_arr[$key] = [
+                    'title' => $key,
                     'item' => $item_arr
                 ];
                 // 拠点に紐付いている荷主を取得
@@ -134,6 +136,7 @@ class ProgressService
                 $customer_tags = CustomerTag::where('tag_id', $tag->tag_id)->get();
                 // 今回のタグ用のキーを配列にセットすると同時に、項目も一式セット
                 $progress_arr[$key] = [
+                    'title' => $key,
                     'item' => $item_arr
                 ];
                 // タグに紐付いている荷主の分だけループ
