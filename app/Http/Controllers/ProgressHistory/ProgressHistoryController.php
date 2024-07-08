@@ -27,7 +27,7 @@ class ProgressHistoryController extends Controller
         $progress_histories = $ProgressHistoryService->getSearchResult();
         // ページネーションを実施
         $progress_histories = $progress_histories->paginate(50);
-        // 荷主を取得
+        // 拠点を取得
         $bases = Base::getAll()->with('customers')->get();
         // 項目を取得
         $items = Item::getAll()->where('is_progress_history_add', 1)->get();

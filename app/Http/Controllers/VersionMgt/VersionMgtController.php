@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 // モデル
 use App\Models\SystemVersionManagement;
-use App\Models\Customer;
+use App\Models\Base;
 
 class VersionMgtController extends Controller
 {
@@ -26,11 +26,11 @@ class VersionMgtController extends Controller
         }
         // 並び替えて取得
         $system_version_managements = $system_version_managements->orderBy('updated_at', 'desc')->get();
-        // 荷主を取得
-        $customers = Customer::orderBy('base_id', 'asc')->get();
+        // 拠点を取得
+        $bases = Base::getAll()->with('customers')->get();
         return view('version_mgt.index')->with([
             'system_version_managements' => $system_version_managements,
-            'customers' => $customers,
+            'bases' => $bases,
         ]);
     }
 }
