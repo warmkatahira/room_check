@@ -17,8 +17,12 @@ use Carbon\CarbonImmutable;
 class ProgressService
 {
     // 荷主毎で集計した進捗を取得
-    public function getProgressByCustomer()
+    public function getProgressByCustomer($request)
     {
+        // 拠点が指定されていたらセッションに格納
+        if($request->base_select_enter){
+            session(['search_base_id' => $request->search_base_id]);
+        }
         // 項目を配列にセット
         $item_arr = $this->setItemArr();
         // 進捗情報を格納する配列をセット
@@ -28,8 +32,13 @@ class ProgressService
         $tag_arr = [];
         // 荷主が紐付いている拠点を取得
         $customers = Customer::with('progresses')
-                            ->orderBy('updated_at', 'desc')
-                            ->get();
+                            ->orderBy('updated_at', 'desc');
+        // base_select_enterがtrueかつ、base_idがnullでなければ条件を適用
+        if($request->base_select_enter && !is_null($request->search_base_id)){
+            $customers = $customers->where('base_id', $request->search_base_id);
+        }
+        // 取得
+        $customers = $customers->get();
         // 荷主の分だけループ
         foreach($customers as $customer){
             // 進捗が存在する荷主のみ処理を継続
