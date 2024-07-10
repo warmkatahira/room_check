@@ -1,0 +1,1 @@
+$(function(){$(".category_select").each(function(){let e=$(this).attr("href");location.href.indexOf(e)!==-1&&($(this).removeClass("bg-theme-sub"),$(this).addClass("bg-theme-main text-white"))})});$(document).ready(function(){$("#search_base_id").change(function(){$("#base_select_form").submit()})});

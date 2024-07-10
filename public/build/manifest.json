@@ -30,7 +30,7 @@
     "src": "resources/js/item/item.js"
   },
   "resources/js/progress/category_select.js": {
-    "file": "assets/category_select-fb506d67.js",
+    "file": "assets/category_select-9b76db5d.js",
     "isEntry": true,
     "src": "resources/js/progress/category_select.js"
   },
