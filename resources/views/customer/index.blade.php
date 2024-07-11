@@ -6,6 +6,8 @@
         <a href="{{ route('customer.create') }}" class="col-span-12 xl:col-span-1 py-3 text-center text-white text-sm bg-blue-600"><i class="las la-plus-square la-lg mr-1"></i>荷主追加</a>
     </div>
     <x-customer.search :bases="$bases" />
+    <!-- ページネーション -->
+    <x-pagination :pages="$customers" />
     <div class="">
         <table class="text-xs block whitespace-nowrap">
             <thead>
