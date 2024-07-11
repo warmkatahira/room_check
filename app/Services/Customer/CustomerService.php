@@ -7,6 +7,39 @@ use App\Models\Customer;
 
 class CustomerService
 {
+    // セッションを削除
+    public function deleteSession()
+    {
+        // セッションを削除
+        session()->forget([
+            'search_base_id',
+        ]);
+        return;
+    }
+
+    // セッションに検索条件を格納
+    public function setSearchCondition($request)
+    {
+        // trueなら検索が実行されているので、検索条件をセット
+        if($request->search_enter){
+            // 検索条件をセッションにを格納
+            session(['search_base_id' => $request->search_base_id]);
+        }
+        return;
+    }
+
+    // 検索結果を取得
+    public function getSearchResult()
+    {
+        // 荷主をセット
+        $customers = Customer::query();
+        // 拠点の条件がある場合
+        if (session('search_base_id') != null) {
+            $customers = $customers->where('customers.base_id', session('search_base_id'));
+        }
+        return $customers->orderBy('customers.base_id', 'asc')->paginate(20);
+    }
+
     // 荷主を追加
     public function createCustomer($request){
         Customer::create([

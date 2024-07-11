@@ -15,12 +15,21 @@ use App\Http\Requests\CustomerUpdateRequest;
 
 class CustomerController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        // 荷主を取得
-        $customers = Customer::with('base')->get();
+        // インスタンス化
+        $CustomerService = new CustomerService;
+        // セッションを削除
+        $CustomerService->deleteSession();
+        // セッションに検索条件を格納
+        $CustomerService->setSearchCondition($request);
+        // 検索結果を取得
+        $customers = $CustomerService->getSearchResult();
+        // 拠点を取得
+        $bases = Base::getAll()->get();
         return view('customer.index')->with([
             'customers' => $customers,
+            'bases' => $bases,
         ]);
     }
 
