@@ -37,7 +37,7 @@ class CustomerService
         if (session('search_base_id') != null) {
             $customers = $customers->where('customers.base_id', session('search_base_id'));
         }
-        return $customers->orderBy('customers.base_id', 'asc')->paginate(20);
+        return $customers->orderBy('customers.base_id', 'asc')->orderBy('customer_code', 'asc')->paginate(20);
     }
 
     // 荷主を追加
