@@ -22,6 +22,8 @@ class ProgressService
         // 拠点が指定されていたらセッションに格納
         if($request->base_select_enter){
             session(['search_base_id' => $request->search_base_id]);
+        }else{
+            session()->forget(['search_base_id']);
         }
         // 項目を配列にセット
         $item_arr = $this->setItemArr();
