@@ -64,6 +64,7 @@ class ProgressService
                     'shipping_confirmed_at_today' => $shipping_confirmed_at_today,
                     'alert' => false,
                     'alert_message' => null,
+                    'information' => $customer->informations,
                 ];
                 // 荷主に紐付いている進捗を取得
                 $progresses = $customer->progresses()->get();

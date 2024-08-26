@@ -53,7 +53,7 @@
                         </ul>
                     </div>
                 @endif
-                <p class="text-white text-center">{{ $value['title'] }}</p>
+                <p class="text-white text-center flex-1">{{ $value['title'] }}</p>
             </div>
             @if(isset($value['tags']) && $value['tags']->count() > 0)
                 <div class="{{ $bg }} px-1 py-1 grid grid-cols-12 gap-2">
@@ -80,6 +80,15 @@
                     </div>
                 @endif
             @endforeach
+            @if(isset($value['information']) && $value['information']->count() > 0)
+                @foreach($value['information'] as $information)
+                    <div class="{{ $bg_sub .' '. $border }} py-1 px-3 border-b border-x flex flex-row">
+                        <p class="text-sm text-black w-8/12">{{ $information->label }}</p>
+                        <p class="text-sm text-black pr-3 w-3/12 text-right">{{ number_format($information->value, 0) }}</p>
+                        <p class="text-sm text-black w-1/12 text-left">{{ $information->unit }}</p>
+                    </div>
+                @endforeach
+            @endif
         </div>
     @endforeach
 </div>

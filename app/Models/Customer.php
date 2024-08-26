@@ -68,4 +68,9 @@ class Customer extends Model
                     ->join('progresses', 'progresses.customer_code', 'customers.customer_code')
                     ->count();
     }
+    // informationテーブルとのリレーション
+    public function informations()
+    {
+        return $this->hasMany(Information::class, 'customer_code', 'customer_code');
+    }
 }

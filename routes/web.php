@@ -114,7 +114,6 @@ Route::middleware(['auth'])->group(function () {
             Route::post('delete', 'delete')->name('delete');
         });
     });
-    
 });
 
 require __DIR__.'/auth.php';
