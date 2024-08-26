@@ -75,7 +75,13 @@
                 @if(!is_null($ratio_value))
                     <div class="{{ $bg_sub .' '. $border }} py-1 px-3 border-b border-x flex flex-row">
                         <p class="text-sm text-black w-8/12">{{ $ratio_key }}</p>
-                        <p class="text-sm text-black pr-3 w-3/12 text-right">{{ number_format($ratio_value, 0) }}</p>
+                        <p class="text-sm text-black pr-3 w-3/12 text-right">
+                            @if($ratio_value == 100)
+                                {{ number_format($ratio_value, 0) }}
+                            @else
+                                {{ number_format($ratio_value, 1) }}
+                            @endif
+                        </p>
                         <p class="text-sm text-black w-1/12 text-left"><i class="las la-percent mt-0.5"></i></p>
                     </div>
                 @endif
