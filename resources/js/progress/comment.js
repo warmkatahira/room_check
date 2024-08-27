@@ -23,7 +23,7 @@ $('#comment_update_enter').on("click",function(){
         if($('#comment').val().length > 50){
             throw new Error('コメントは50文字以内で入力して下さい。');
         }
-        var ajax_url = '/ccomment/ajax_comment_update';
+        var ajax_url = '/comment/ajax_comment_update';
         $.ajax({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
