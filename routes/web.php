@@ -8,6 +8,8 @@ use App\Http\Controllers\Welcome\WelcomeController;
 use App\Http\Controllers\Progress\ProgressController;
 // +-+-+-+-+-+-+-+- 荷主 +-+-+-+-+-+-+-+-
 use App\Http\Controllers\Customer\CustomerController;
+// +-+-+-+-+-+-+-+- コメント +-+-+-+-+-+-+-+-
+use App\Http\Controllers\Customer\CommentController;
 // +-+-+-+-+-+-+-+- 項目 +-+-+-+-+-+-+-+-
 use App\Http\Controllers\Item\ItemController;
 // +-+-+-+-+-+-+-+- タグ +-+-+-+-+-+-+-+-
@@ -52,6 +54,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('update', 'update_index')->name('update_index');
         Route::post('update', 'update')->name('update');
         Route::post('delete', 'delete')->name('delete');
+    });
+    Route::controller(CommentController::class)->prefix('comment')->name('comment.')->group(function(){
+        Route::post('ajax_comment_update', 'ajax_comment_update');
     });
     // ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆ マスタ ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆
     Route::middleware(['MasterOperationIsAvailable'])->group(function () {
