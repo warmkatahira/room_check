@@ -1,6 +1,6 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-f0691e64.css",
+    "file": "assets/app-4fa84aa4.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -34,6 +34,11 @@
     "isEntry": true,
     "src": "resources/js/progress/category_select.js"
   },
+  "resources/js/progress/comment.js": {
+    "file": "assets/comment-ae98adea.js",
+    "isEntry": true,
+    "src": "resources/js/progress/comment.js"
+  },
   "resources/js/progress_history/progress_history.js": {
     "file": "assets/progress_history-ac2820f2.js",
     "isEntry": true,
@@ -65,7 +70,7 @@
     "src": "resources/js/version_mgt/version_mgt.js"
   },
   "resources/js/window_update.js": {
-    "file": "assets/window_update-c168924d.js",
+    "file": "assets/window_update-acfe2282.js",
     "isEntry": true,
     "src": "resources/js/window_update.js"
   },

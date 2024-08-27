@@ -95,6 +95,15 @@
                     </div>
                 @endforeach
             @endif
+            @if(array_key_exists('comment', $value))
+                <div class="{{ $bg_sub .' '. $border }} py-1 px-3 border-b border-x flex flex-col">
+                    <div class="{{ $bg_sub .' '. $border }} flex flex-row">
+                        <p class="text-xs">コメント</p>
+                        <p class="comment_update text-xs ml-auto underline cursor-pointer" data-customer-code="{{ $value['customer_code'] }}" data-comment="{{ $value['comment'] }}">編集</p>
+                    </div>
+                    <p class="text-xs mt-1">{{ $value['comment'] }}</p>
+                </div>
+            @endif
         </div>
     @endforeach
 </div>

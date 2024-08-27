@@ -20,6 +20,7 @@ export default defineConfig({
                 'resources/js/search_date.js',
                 // 進捗
                 'resources/js/progress/category_select.js',
+                'resources/js/progress/comment.js',
                 'resources/scss/alert_message.scss',
                 // 荷主マスタ
                 'resources/js/customer/customer.js',

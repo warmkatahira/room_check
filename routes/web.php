@@ -63,6 +63,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('update', 'update_index')->name('update_index');
             Route::post('update', 'update')->name('update');
             Route::post('delete', 'delete')->name('delete');
+            Route::post('ajax_comment_update', 'ajax_comment_update');
         });
         // ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆ 項目 ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆
         Route::controller(ItemController::class)->prefix('item')->name('item.')->group(function(){

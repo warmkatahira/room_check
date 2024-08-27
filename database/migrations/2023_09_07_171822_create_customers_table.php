@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('customer_name', 20);
             $table->string('base_id', 20);
             $table->timestamp('shipping_confirmed_at')->nullable();
+            $table->string('comment', 50)->nullable();
             $table->timestamps();
             // 外部キー制約
             $table->foreign('base_id')->references('base_id')->on('bases');

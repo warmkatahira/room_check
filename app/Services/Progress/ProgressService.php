@@ -65,6 +65,7 @@ class ProgressService
                     'alert' => false,
                     'alert_message' => null,
                     'information' => $customer->informations,
+                    'comment' => $customer->comment,
                 ];
                 // 荷主に紐付いている進捗を取得
                 $progresses = $customer->progresses()->get();
