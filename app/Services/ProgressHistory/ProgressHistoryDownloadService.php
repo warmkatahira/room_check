@@ -29,6 +29,7 @@ class ProgressHistoryDownloadService
                 foreach($progress_histories as $progress_history){
                     $row = [
                         CarbonImmutable::parse($progress_history->date)->format('Y-m-d'),
+                        CarbonImmutable::parse($progress_history->created_at)->format('H:i'),
                         $progress_history->customer->base->base_name,
                         $progress_history->customer->customer_name,
                         $progress_history->item->item_name.'('.$progress_history->item->item_unit.')',

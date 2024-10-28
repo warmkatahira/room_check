@@ -14,6 +14,7 @@
             <thead>
                 <tr class="text-center text-white bg-gray-600 sticky top-0">
                     <th class="font-thin py-3 px-2">日付</th>
+                    <th class="font-thin py-3 px-2">時間</th>
                     <th class="font-thin py-3 px-2">拠点名</th>
                     <th class="font-thin py-3 px-2">荷主名</th>
                     <th class="font-thin py-3 px-2">項目名(単位)</th>
@@ -24,6 +25,7 @@
                 @foreach($progress_histories as $progress_history)
                     <tr class="text-left hover:bg-theme-sub cursor-default">
                         <td class="py-1 px-2 border">{{ CarbonImmutable::parse($progress_history->date)->isoFormat('Y年MM月DD日(ddd)') }}</td>
+                        <td class="py-1 px-2 border">{{ CarbonImmutable::parse($progress_history->created_at)->isoFormat('HH時mm分') }}</td>
                         <td class="py-1 px-2 border">{{ $progress_history->customer->base->base_name }}</td>
                         <td class="py-1 px-2 border">{{ $progress_history->customer->customer_name }}</td>
                         <td class="py-1 px-2 border">{{ $progress_history->item->item_name.'('.$progress_history->item->item_unit.')' }}</td>

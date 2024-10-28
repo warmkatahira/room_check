@@ -24,6 +24,7 @@ class ProgressHistory extends Model
     {
         return [
             '日付',
+            '時間',
             '拠点名',
             '荷主名',
             '項目名(単位)',
