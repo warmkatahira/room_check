@@ -98,7 +98,7 @@ class LogCheckController extends Controller
         AbnormalLog::upsert($abnormal_data, 'abnormal_log_id');
         // 異常ログを取得
         $abnormal_logs = AbnormalLog::all();
-        return view('welcome')->with([
+        return redirect()->route('welcome.index')->with([
             'abnormal_logs' => $abnormal_logs,
         ]);
     }
