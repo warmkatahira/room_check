@@ -1,96 +1,21 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-4fa84aa4.css",
+    "file": "assets/app-bf3ba257.css",
     "isEntry": true,
     "src": "resources/css/app.css"
-  },
-  "resources/js/alert_setting/alert_setting.js": {
-    "file": "assets/alert_setting-c2949ecf.js",
-    "isEntry": true,
-    "src": "resources/js/alert_setting/alert_setting.js"
   },
   "resources/js/app.js": {
     "file": "assets/app-6e0eadfb.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   },
-  "resources/js/customer/customer.js": {
-    "file": "assets/customer-8565838f.js",
+  "resources/js/file_select.js": {
+    "file": "assets/file_select-a4fab8fb.js",
     "isEntry": true,
-    "src": "resources/js/customer/customer.js"
-  },
-  "resources/js/customer_tag/customer_tag.js": {
-    "file": "assets/customer_tag-b653cb20.js",
-    "isEntry": true,
-    "src": "resources/js/customer_tag/customer_tag.js"
-  },
-  "resources/js/item/item.js": {
-    "file": "assets/item-d2699e17.js",
-    "isEntry": true,
-    "src": "resources/js/item/item.js"
-  },
-  "resources/js/progress/category_select.js": {
-    "file": "assets/category_select-9b76db5d.js",
-    "isEntry": true,
-    "src": "resources/js/progress/category_select.js"
-  },
-  "resources/js/progress/comment.js": {
-    "file": "assets/comment-78b16970.js",
-    "isEntry": true,
-    "src": "resources/js/progress/comment.js"
-  },
-  "resources/js/progress_history/progress_history.js": {
-    "file": "assets/progress_history-ac2820f2.js",
-    "isEntry": true,
-    "src": "resources/js/progress_history/progress_history.js"
-  },
-  "resources/js/role/role.js": {
-    "file": "assets/role-009f64bb.js",
-    "isEntry": true,
-    "src": "resources/js/role/role.js"
-  },
-  "resources/js/search_date.js": {
-    "file": "assets/search_date-8ec2ed9b.js",
-    "isEntry": true,
-    "src": "resources/js/search_date.js"
-  },
-  "resources/js/tag/tag.js": {
-    "file": "assets/tag-b2e18c5f.js",
-    "isEntry": true,
-    "src": "resources/js/tag/tag.js"
-  },
-  "resources/js/user/user.js": {
-    "file": "assets/user-c47ba58d.js",
-    "isEntry": true,
-    "src": "resources/js/user/user.js"
-  },
-  "resources/js/version_mgt/version_mgt.js": {
-    "file": "assets/version_mgt-cede2370.js",
-    "isEntry": true,
-    "src": "resources/js/version_mgt/version_mgt.js"
-  },
-  "resources/js/window_update.js": {
-    "file": "assets/window_update-acfe2282.js",
-    "isEntry": true,
-    "src": "resources/js/window_update.js"
-  },
-  "resources/scss/alert_message.scss": {
-    "file": "assets/alert_message-d9e618b5.css",
-    "isEntry": true,
-    "src": "resources/scss/alert_message.scss"
-  },
-  "resources/scss/navigation.scss": {
-    "file": "assets/navigation-63e62e6e.css",
-    "isEntry": true,
-    "src": "resources/scss/navigation.scss"
-  },
-  "resources/scss/navigation_hamburger.scss": {
-    "file": "assets/navigation_hamburger-6fe7efc1.css",
-    "isEntry": true,
-    "src": "resources/scss/navigation_hamburger.scss"
+    "src": "resources/js/file_select.js"
   },
   "resources/scss/theme.scss": {
-    "file": "assets/theme-c2f33d00.css",
+    "file": "assets/theme-4118173e.css",
     "isEntry": true,
     "src": "resources/scss/theme.scss"
   }

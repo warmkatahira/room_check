@@ -1,9 +1,29 @@
-$main_color: #00704a;
-$sub_color: #b9dacf;
-$third_color: #e6e6e6;
+$main_color: #FEA4A4;
+$sub_color: #FFDEDE;
+$third_color: #ebe6e6;
 
 // 画面全体に適用するスタイル
 body{
     background-color: $third_color;
     font-family: 'Kosugi Maru';
+}
+
+// 通常のフォント
+.Kosugi {
+    font-family: 'Kosugi Maru'
+}
+
+// 数字のフォント
+.Alkatra {
+    font-family: 'Alkatra'
+}
+
+// レモネードのフォント
+.Lemonada {
+    font-family: 'Lemonada'
+}
+
+// 英字のフォント
+.Rowdies {
+    font-family: 'Rowdies'
 }

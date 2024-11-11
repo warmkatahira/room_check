@@ -1,1 +1,0 @@
-$(".date_from").on("change",function(){const t=$(this).nextAll("input");$(this).val()>t.val()&&t.val($(this).val()),$(this).val()==""&&t.val("")});$(".date_to").on("change",function(){const t=$(this).prevAll("input");($(this).val()<t.val()||t.val()=="")&&t.val($(this).val()),$(this).val()==""&&t.val("")});

@@ -1,1 +1,0 @@
-$(document).ready(function(){let t;function o(){t=setInterval(function(){location.reload()},3e4)}o(),$(".comment_update").click(function(){clearInterval(t)}),$("#comment_modal_close").click(function(){o()})});

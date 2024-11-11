@@ -1,1 +1,0 @@
-$("#role_create_enter").on("click",function(){window.confirm("権限を追加しますか？")==!0&&$("#role_create_form").submit()});$("#role_update_enter").on("click",function(){window.confirm("権限を更新しますか？")==!0&&$("#role_update_form").submit()});$("#role_delete_enter").on("click",function(){window.confirm("権限を削除しますか？")==!0&&$("#role_delete_form").submit()});
